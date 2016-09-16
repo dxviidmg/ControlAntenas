@@ -4,12 +4,18 @@
 
 {%block content%}
 
+	<h1>Lista de contratos</h1>
+
+    <a href="">Crear Contrato</a>
+    <p>
+
 	<table>
 		<thead>
 			<th>Id</th>
 			<th>Usuario</th>
 			<th>Paquete</th>
 			<th>Fecha de alta</th>
+			<th colspan="2" >Acciones</th>
 		</thead>
 
 
@@ -21,11 +27,16 @@
 				<td>{{servicio.user}}</td>
 				<td>{{servicio.paquete}}</td>
 				<td>{{servicio.fecha}}</td>
+				<td><a href="">Editar</a></td>
+				<td><a href="">Eliminar</a></td>
 			</tr>
 		</tbody>
+
 	{%empty%}
-		<h2>Vacio</h2>
+
 		</table>
+		<h2>Vacio</h2>
+
 	{%endfor%}
  
 {%endblock content%}

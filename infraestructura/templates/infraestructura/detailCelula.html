@@ -4,66 +4,73 @@
 
 {%block content%}
 
-<div class="fdizquierda" align="center">
-	<h3>Lista de Celulas</h3>
-	{%for cel in celulas%}
-		<p><a href="{%url 'infraestructura:detailCelulaAndListLans' cel.pk%}">{{cel.ubicacion}}</a></p>
-	{%empty%}
-		<h2>Vacio</h2>
-	{%endfor%}
-	<p><a href="{%url 'infraestructura:detailLineaAndlistCelulas' celula.pk%}">Regresa</a></p>
-</div>
-<div class="fdderecha">
-	<table>
-		<thead>
-			<th>Ubicación</th>
-			<th>Ancho de Banda</th>
-			<th>Linea</th>
-		</thead>
-		<tbody>
-			<tr>
-				<td>{{celula.ubicacion}}</td>
-				<td>{{celula.ancho_de_banda}}</td>
-				<td>{{celula.linea}}</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="fdizquierda" align="center">
+		<h3>Lista de Celulas</h3>
 
-	<h2>Lista de redes</h2>
-	<table>
-		<thead>
-			<th>IP de red</th>
-			<th>IP de host inicial</th>
-			<th>IP de host final</th>
-			<th>IP de mascara de red</th>
-			<th>Celula</th>
-			<th>Servicio</th>
-		</thead>
-		{%for red in redes%}
-		<tbody>
-			<tr>
-				<td>{{red.ip_red}}</td>
-				<td>{{red.ip_host_inicial}}</td>
-				<td>{{red.ip_host_final}}</td>
-				<td>{{red.ip_mascara_de_red}}</td>
-				<td>{{red.celula}}</td>
-				<td>{{red.servicio}}</td>
-			</tr>
-		</tbody>
+		{%for cel in celulas%}
+
+			<p><a href="{%url 'infraestructura:detailCelulaAndListLans' cel.pk%}">{{cel.ubicacion}}</a></p>
+
 		{%empty%}
-		<h2>Vacio</h2>
-		</table>
+
+			<h2>Vacio</h2>
+
 		{%endfor%}
-</div>
+		<p><a href="{%url 'infraestructura:detailLineaAndlistCelulas' celula.pk%}">Regresa</a></p>
+	</div>
+	<div class="fdderecha">
+		<table>
+			<thead>
+				<th>Ubicación</th>
+				<th>Ancho de Banda</th>
+				<th>Linea</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{celula.ubicacion}}</td>
+					<td>{{celula.ancho_de_banda}}</td>
+					<td>{{celula.linea}}</td>
+				</tr>
+			</tbody>
+		</table>
 
+		<h2>Lista de redes</h2>
 
-	
-	
-	
-	
-	
-	
+		<a href="">Crear Red</a>
+   		<p>
 
+		<table>
+			<thead>
+				<th>IP de red</th>
+				<th>IP de host inicial</th>
+				<th>IP de host final</th>
+				<th>IP de mascara de red</th>
+				<th>Celula</th>
+				<th>Servicio</th>
+				<th>Acciones</th>
+			</thead>
 
+			{%for red in redes%}
+
+			<tbody>
+				<tr>
+					<td>{{red.ip_red}}</td>
+					<td>{{red.ip_host_inicial}}</td>
+					<td>{{red.ip_host_final}}</td>
+					<td>{{red.ip_mascara_de_red}}</td>
+					<td>{{red.celula}}</td>
+					<td>{{red.servicio}}</td>
+					<td><a href="">Editar</a></td>
+				</tr>
+			</tbody>
+
+			{%empty%}
+
+			</table>
+			<h2>Vacio</h2>
+			
+			{%endfor%}
+
+	</div>
 
 {%endblock content%}
