@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+
+{%block title%}Datos de linea{%endblock title%}
+
+{%block content%}
+
+<div class="fdizquierda" align="center">
+  <h3>Lista de Lineas</h3>
+    {%for lin in lineas%}
+      <p><a <a href="{%url 'infraestructura:detailLineaAndlistCelulas' lin.pk%}">{{lin.descripcion}}</a></p>
+    {%empty%}
+      <p>No existen lineas</p>
+    {%endfor%}
+  <p><a href="{%url 'infraestructura:listLineas'%}">Regresa</a></p>
+</div>
+<div class="fdderecha">
+<h2>Información de Linea</h2>
+  <table>
+    <tr>
+      <th>Descripcion</th>
+      <th>Distribuidor</th> 
+      <th>Ancho de banda</th>
+    </tr>
+    <tr>
+      <td>{{linea.descripcion}}</td>
+      <td>{{linea.distribuidor}}</td>
+      <td>{{linea.ancho_de_banda}}</td>     
+    </tr>  
+  </table>
+  <table>
+    <tr>
+      <th>Ubicacion</th> 
+      <th>Ancho de Banda</th>
+      <th>Ver detalles</th>
+      <th>Editar</th>
+      <th>Borrar</th>
+    </tr>
+  <h2>Lista de celulas</h2>
+  {%for celula in celulas%}
+    <tr>
+      <td>{{celula.ubicacion}}</td>
+      <td>{{celula.ancho_de_banda}} Megas</td>
+      <td><a href="">Ver detalles</a></td>
+      <td><a href="">Editar</a></td>
+      <td><a href="">Borrar</a></td>
+    </tr>
+  {%empty%}
+  </table>
+  <h2>Vacio</h2>
+  {%endfor%}
+</div>
+
+{%endblock content%}

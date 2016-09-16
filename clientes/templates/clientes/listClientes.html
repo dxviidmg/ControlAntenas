@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+
+{%block title%}Lista de lineas{%endblock title%}
+
+{%block content%}
+
+	<table>
+		<thead>
+			<tr>
+				<th>Apellidos</th>
+				<th>Nombre</th>
+				<th>Ver detalles</th>
+				<th>Editar</th>
+			</tr>
+		</thead>
+
+		{%for user in users%}
+		<tbody>
+			<tr>
+				<td>{{user.last_name}}</td>
+				<td>{{user.first_name}}</td>
+				<td><a href="{%url 'clientes:detailCliente' request.user.pk%}">Ver detalle</a></td>
+				<td>Editar</td>		
+			</tr>
+		</tbody>
+		{%empty%}
+	</table>
+	<h2>Lista vacia</h2>
+		{%endfor%}
+
+{%endblock content%}

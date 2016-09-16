@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+
+{%block title%}Lista de lineas{%endblock title%}
+
+{%block content%}
+
+	<h2>Datos de cliente</h2>
+	<p>Numero: {{user.pk}}</p>
+	<p>Nombre: {{user.first_name}}</p>
+	<p>Apellidos: {{user.last_name}}</p>
+	<p>Telefono: {{perfil.telefono}}</p> 
+	<p>Correo electronico: {{user.email}}</p>
+	<p>Fecha de registro: {{perfil.fecha_registro}}</p> 
+
+	<h2>Domicilio</h2>
+	<p>Calle: {{direccion.calle}}</p>
+	<p>Numero exterior: {{direccion.numero_exterior}}</p>
+	<p>Numero interior: {{direccion.numero_interior}}</p>
+	<p>Colonia: {{direccion.colonia}}</p>
+	<p>Ciudad o municipio: {{direccion.municipio}}</p>
+	<p>Estado: {{direccion.estado}}</p>
+	<p>Codigo postal: {{direccion.codigo_postal}}</p>
+
+{%endblock content%}

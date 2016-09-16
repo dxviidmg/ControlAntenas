@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+
+{%block title%}Lista de lineas{%endblock title%}
+
+{%block content%}
+
+ 	<h1>Lista de Lineas</h1>
+
+		<table>
+			<tr>
+				<th>Descripcion</th>
+				<th>Distribuidor</th>
+				<th>Ancho de Banda</th>
+				<th>Costo</th>
+				<th>Proximo pago</th>
+				<th>Editar</th>
+				<th>Borrar</th>
+			</tr>
+
+		{%for linea in lineas%}
+
+			<tr>
+				<td>{{linea.descripcion}}</td>
+				<td>{{linea.distribuidor}}</td>
+				<td>{{linea.ancho_de_banda}} Megas</td>
+				<td>{{linea.pago}}</td>
+				<td>{{linea.fecha_proximo_pago}}</td>
+				<td><a href="{%url 'infraestructura:detailLineaAndlistCelulas' linea.pk%}">Ver detalles</a></td>
+				<th><a href="">Editar</a></th>
+				<th><a href="">Borrar</a></th>
+			</tr>
+
+		{%empty%}
+
+			</table>
+		<h3>No hay lineas</h3>
+
+		{%endfor%}
+
+{%endblock content%}s
