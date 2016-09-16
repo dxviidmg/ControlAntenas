@@ -1,22 +1,9 @@
+{%load static%}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>{%block title%}{%endblock title%}</title>
-
-<style>
-  html, body{
-  height: 100%;
-  margin-right: 1%;
-  margin-left: 1%;
-}
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    text-align: center;
-}
-.fdizquierda {float: left; width: 15%;}
-.fdderecha {float: right; width: 80%;}
-</style>
+	<link rel="stylesheet" type="text/css" href="{%static 'css/base.css'%}">
 </head>
 <body>
 	<nav>
@@ -24,7 +11,6 @@ table, th, td {
 			<li><a href="{%url 'infraestructura:listLineas'%}">Infraestructura</a></li>
 			<li><a href="{%url 'servicio:listServicios'%}">Servicios</a></li>
 			<li><a href="{%url 'clientes:listClientes'%}">Clientes</a></li>
-
 		</ul>
 	</nav>
 	{%block content%}{%endblock content%}
