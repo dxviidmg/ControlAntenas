@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+
+{%block title%}Datos de linea{%endblock title%}
+
+{%block content%}
+
+	<table>
+		<thead>
+			<th>Id</th>
+			<th>Usuario</th>
+			<th>Paquete</th>
+			<th>Fecha de alta</th>
+		</thead>
+
+
+	{%for servicio in servicios%}
+
+		<tbody>
+			<tr>
+				<td>{{servicio.id}}</td>
+				<td>{{servicio.user}}</td>
+				<td>{{servicio.paquete}}</td>
+				<td>{{servicio.fecha}}</td>
+			</tr>
+		</tbody>
+	{%empty%}
+		<h2>Vacio</h2>
+		</table>
+	{%endfor%}
+ 
+{%endblock content%}

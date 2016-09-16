@@ -17,9 +17,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from clientes import urls as clientesUrls
 from infraestructura import urls as infraestructuraUrls
+from servicio import urls as servicioUrls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(clientesUrls, namespace="clientes")),
     url(r'^', include(infraestructuraUrls, namespace="infraestructura")),
+    url(r'^', include(servicioUrls, namespace="servicio")),
 ]

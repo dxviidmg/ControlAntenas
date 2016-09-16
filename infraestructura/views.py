@@ -26,3 +26,18 @@ class DetailLineaAndListCelulas(View):
 			
 		}
 		return render(request, template_name, context)
+
+class DetailCelulaAndListLans(View):
+	def get(self, request, pk):
+		template_name = "infraestructura/detailCelula.html"
+		celulas = Celula.objects.all().order_by("ubicacion")
+		celula = get_object_or_404(Celula, pk=pk)
+		redes = RedLan.objects.all().order_by("ip_red").filter(celula=celula)
+		
+
+		context = {
+			'celula': celula,
+			'redes': redes,
+			'celulas': celulas,
+		}
+		return render(request, template_name, context)
