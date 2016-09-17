@@ -19,11 +19,14 @@
 		<p><a href="{%url 'infraestructura:detailLineaAndlistCelulas' celula.pk%}">Regresa</a></p>
 	</div>
 	<div class="fdderecha">
+
+		<h2>Información de Celula</h2>
+
 		<table>
-			<thead>
-				<th>Ubicación</th>
-				<th>Ancho de Banda</th>
-				<th>Linea</th>
+			<thead>				
+				<th><p align="center">Ubicación</p></th>
+				<th><p align="center">Ancho de Banda</p></th>
+				<th><p align="center">Linea</p></th>
 			</thead>
 			<tbody>
 				<tr>
@@ -41,13 +44,13 @@
 
 		<table>
 			<thead>
-				<th>IP de red</th>
-				<th>IP de host inicial</th>
-				<th>IP de host final</th>
-				<th>IP de mascara de red</th>
-				<th>Celula</th>
-				<th>Servicio</th>
-				<th>Acciones</th>
+				<th><p align="center">IP de red</p></th>
+				<th><p align="center">IP de host inicial</p></th>
+				<th><p align="center">IP de host final</p></th>
+				<th><p align="center">IP de mascara de red</p></th>
+				<th><p align="center">Celula</p></th>
+				<th><p align="center">Servicio</p></th>
+				<th><p align="center">Acciones</p></th>
 			</thead>
 
 			{%for red in redes%}
