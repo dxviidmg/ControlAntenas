@@ -6,10 +6,10 @@
 
 	<form method="post">
 		{%csrf_token%}
-		<h2>¿Estas seguro que deseas borrar la linea {{object}}?</h2>
+		<h2>¿Estas seguro que deseas borrar el servicio {{object}}?</h2>
 		<input class="btn green" type="submit" value="Si, Seguro">
 
 	</form>
-	<a href=href="{%url 'infraestructura:listLineas' %}">Cancelar</a>
+	<a href=href="{%url 'servicio:listServicios' %}">Cancelar</a>
 
 {%endblock content%}

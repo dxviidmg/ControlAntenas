@@ -10,7 +10,7 @@ class Paquete(models.Model):
 		return self.nombre
 
 class Servicio(models.Model):
-	fecha = models.DateField()
+	fecha = models.DateField(auto_now=True)
 	user = models.OneToOneField(User)
 	paquete = models.ManyToManyField(Paquete)
 

@@ -35,3 +35,17 @@ class UpdatePaquete(UpdateView):
 class DeletePaquete(DeleteView):
 	model = Paquete
 	success_url = reverse_lazy('servicio:listPaquetes')
+
+class CreateServicio(CreateView):
+	model = Servicio
+	success_url = reverse_lazy('servicio:listServicios')
+	fields = ['user', 'paquete']
+
+class UpdateServicio(UpdateView):
+	model = Servicio
+	success_url = reverse_lazy('servicio:listServicios')
+	fields = ['user', 'paquete']
+
+class DeleteServicio(DeleteView):
+	model = Servicio
+	success_url = reverse_lazy('servicio:listServicios')

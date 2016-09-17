@@ -6,7 +6,7 @@
 
 	<h1>Lista de contratos</h1>
 
-    <a href="">Crear Contrato</a>
+    <a href="{% url 'servicio:createServicio' %}">Crear Contrato</a>
     <p>
 
 	<table>
@@ -27,8 +27,8 @@
 				<td>{{servicio.user}}</td>
 				<td>{{servicio.paquete}}</td>
 				<td>{{servicio.fecha}}</td>
-				<td><a href="">Editar</a></td>
-				<td><a href="">Eliminar</a></td>
+				<td><a href="{% url 'servicio:updateServicio' servicio.pk %}">Editar</a></td>
+				<td><a href="{% url 'servicio:deleteServicio' servicio.pk %}">Borrar</a></td>
 			</tr>
 		</tbody>
 
