@@ -4,21 +4,33 @@
 
 {%block content%}
 
-	<h2>Datos generales</h2>
-	<p>Numero: {{user.pk}}</p>
-	<p>Nombre: {{user.first_name}}</p>
-	<p>Apellidos: {{user.last_name}}</p>
-	<p>Telefono: {{perfil.telefono}}</p> 
-	<p>Correo electronico: {{user.email}}</p>
-	<p>Fecha de registro: {{perfil.fecha_registro}}</p> 
+	<div class="fdizquierda2">
+		<h3>Datos generales</h3>
+		<p>Id de usuario: {{user.pk}}</p>
+		<p>Nombre: {{user.first_name}}</p>
+		<p>Apellidos: {{user.last_name}}</p>
+		<p>Telefono: {{perfil.telefono}}</p> 
+		<p>Correo electronico: {{user.email}}</p>
+		<p>Fecha de registro: {{perfil.fecha_registro}}</p> 
 
-	<h2>Domicilio</h2>
-	<p>Calle: {{direccion.calle}}</p>
-	<p>Numero exterior: {{direccion.numero_exterior}}</p>
-	<p>Numero interior: {{direccion.numero_interior}}</p>
-	<p>Colonia: {{direccion.colonia}}</p>
-	<p>Ciudad o municipio: {{direccion.municipio}}</p>
-	<p>Estado: {{direccion.estado}}</p>
-	<p>Codigo postal: {{direccion.codigo_postal}}</p>
+		<h3>Domicilio</h3>
+		<p>Calle: {{direccion.calle}}</p>
+		<p>Numero exterior: {{direccion.numero_exterior}}</p>
+		<p>Numero interior: {{direccion.numero_interior}}</p>
+		<p>Colonia: {{direccion.colonia}}</p>
+		<p>Ciudad o municipio: {{direccion.municipio}}</p>
+		<p>Estado: {{direccion.estado}}</p>
+		<p>Codigo postal: {{direccion.codigo_postal}}</p>
+	</div>
+	<div class="fdderecha2">
+		<h3>Servicio</h3>
+		<p> Id de servicio: {{servicio.id}}</p>
+		<p>Fecha de contrato: {{servicio.fecha}}</p>
+		<p>Paquete: {{servicio.paquete}}</p>
+		<p>IP de red: {{redlan.ip_red}}</p>
+		<p>Celula: {{celula.ubicacion}}</p>
+		<p>Linea: {{linea.descripcion}}</p>
+	</div>
 
 {%endblock content%}
+

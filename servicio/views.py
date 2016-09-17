@@ -10,3 +10,12 @@ class ListServicios(View):
 			'servicios': servicios,
 		}
 		return render(request, template_name, context)
+
+class ListPaquetes(View):
+	def get(self, request):
+		template_name = "servicio/listPaquetes.html"
+		paquetes = Paquete.objects.all()
+		context = {
+			'paquetes': paquetes,
+		}
+		return render(request, template_name, context)

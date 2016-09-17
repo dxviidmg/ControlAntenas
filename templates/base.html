@@ -19,14 +19,15 @@
 	      		<ul class="nav navbar-nav navbar-right">
 	       			<li><a href="{%url 'infraestructura:listLineas'%}">Infraestructura</a></li>
 	        		<li><a href="{%url 'servicio:listServicios'%}">Servicios</a></li>
-	        		<li><a href="{%url 'clientes:listClientes'%}">Clientes</a></li>      
+	        		<li><a href="{%url 'servicio:listPaquetes'%}">Paquetes</a></li>  
+	        		<li><a href="{%url 'clientes:listClientes'%}">Clientes</a></li>     
 	      		</ul>
 	    	</div>
 	 	</div>
 	</nav>
 
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1 center" align="center">{%block content%}{%endblock content%}</div>
+		<div class="col-md-10 col-md-offset-1 center">{%block content%}{%endblock content%}</div>
 	</div>
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

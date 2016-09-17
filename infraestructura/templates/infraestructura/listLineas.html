@@ -16,7 +16,7 @@
 				<th>Ancho de Banda</th>
 				<th>Costo</th>
 				<th>Proximo pago</th>
-				<th colspan="3" >Acciones</th>
+				<th colspan="3">Acciones</th>
 			</tr>
 
 		{%for linea in lineas%}
@@ -28,8 +28,8 @@
 				<td>{{linea.pago}}</td>
 				<td>{{linea.fecha_proximo_pago}}</td>
 				<td><a href="{%url 'infraestructura:detailLineaAndlistCelulas' linea.pk%}">Ver detalles</a></td>
-				<th><a href="">Editar</a></th>
-				<th><a href="">Borrar</a></th>
+				<td><a href="">Editar</a></td>
+				<td><a href="">Borrar</a></td>
 			</tr>
 
 		{%empty%}

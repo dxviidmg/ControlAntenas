@@ -24,7 +24,7 @@
 			<tr>
 				<td>{{user.last_name}}</td>
 				<td>{{user.first_name}}</td>
-				<td><a href="{%url 'clientes:detailCliente' request.user.pk%}">Ver detalle</a></td>
+				<td><a href="{%url 'clientes:detailCliente' user.pk%}">Ver detalle</a></td>
 			</tr>
 		</tbody>
 

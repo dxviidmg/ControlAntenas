@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+
+{%block title%}Datos de linea{%endblock title%}
+
+{%block content%}
+
+	<h1>Lista de contratos</h1>
+
+    <a href="">Crear Paquete</a>
+    <p>
+
+	<table>
+		<thead>
+			<th>Nombre</th>
+			<th>Descripcion</th>
+			<th>Precio</th>
+			<th colspan="2" >Acciones</th>
+		</thead>
+
+
+	{%for paquete in paquetes%}
+
+		<tbody>
+			<tr>
+				<td>{{paquete.nombre}}</td>
+				<td>{{paquete.descripcion}}</td>
+				<td>{{paquete.precio}}</td>
+				<td><a href="">Editar</a></td>
+				<td><a href="">Eliminar</a></td>
+			</tr>
+		</tbody>
+
+	{%empty%}
+
+		</table>
+		<h2>Vacio</h2>
+
+	{%endfor%}
+ 
+{%endblock content%}
