@@ -6,7 +6,7 @@
 
  	<h1>Lista de Lineas</h1>
 
- 		<a href="">Crear Linea</a>
+ 		<a href="{%url 'infraestructura:createLinea' %}">Crear Linea</a>
  		<p>
 
 		<table>
@@ -28,8 +28,8 @@
 				<td>{{linea.pago}}</td>
 				<td>{{linea.fecha_proximo_pago}}</td>
 				<td><a href="{%url 'infraestructura:detailLineaAndlistCelulas' linea.pk%}">Ver detalles</a></td>
-				<td><a href="">Editar</a></td>
-				<td><a href="">Borrar</a></td>
+				<td><a href="{% url 'infraestructura:updateLinea' linea.pk %}">Editar</a></td>
+				<td><a href="{% url 'infraestructura:deleteLinea' linea.pk %}">Borrar</a></td>
 			</tr>
 
 		{%empty%}

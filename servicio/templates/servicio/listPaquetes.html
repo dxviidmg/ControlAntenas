@@ -6,7 +6,7 @@
 
 	<h1>Lista de contratos</h1>
 
-    <a href="">Crear Paquete</a>
+    <a href="{% url 'servicio:createPaquete'%}">Crear Paquete</a>
     <p>
 
 	<table>
@@ -25,8 +25,8 @@
 				<td>{{paquete.nombre}}</td>
 				<td>{{paquete.descripcion}}</td>
 				<td>{{paquete.precio}}</td>
-				<td><a href="">Editar</a></td>
-				<td><a href="">Eliminar</a></td>
+				<td><a href="{% url 'servicio:updatePaquete' paquete.pk %}">Editar</a></td>
+				<td><a href="{% url 'servicio:deletePaquete' paquete.pk %}">Borrar</a></td>
 			</tr>
 		</tbody>
 

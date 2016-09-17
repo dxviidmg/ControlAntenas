@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import View
 from .models import *
 from django.db.models import Sum
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
 
 class ListLineas(View):
 	def get(self, request):
@@ -34,10 +36,23 @@ class DetailCelulaAndListLans(View):
 		celula = get_object_or_404(Celula, pk=pk)
 		redes = RedLan.objects.all().order_by("ip_red").filter(celula=celula)
 		
-
 		context = {
 			'celula': celula,
 			'redes': redes,
 			'celulas': celulas,
 		}
 		return render(request, template_name, context)
+
+class CreateLinea(CreateView):
+	model = Linea
+	success_url = reverse_lazy('infraestructura:listLineas')
+	fields = ['descripcion', 'distribuidor', 'ancho_de_banda', 'pago', 'fecha_proximo_pago']
+
+class UpdateLinea(UpdateView):
+	model = Linea
+	success_url = reverse_lazy('infraestructura:listLineas')
+	fields = ['descripcion', 'distribuidor', 'ancho_de_banda', 'pago', 'fecha_proximo_pago']
+
+class DeleteLinea(DeleteView):
+	model = Linea
+	success_url = reverse_lazy('infraestructura:listLineas')
