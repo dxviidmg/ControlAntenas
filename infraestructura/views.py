@@ -34,12 +34,12 @@ class DetailCelulaAndListLans(View):
 		template_name = "infraestructura/detailCelula.html"
 		celulas = Celula.objects.all().order_by("ubicacion")
 		celula = get_object_or_404(Celula, pk=pk)
-		redes = RedLan.objects.all().order_by("ip_red").filter(celula=celula)
+		redLans = RedLan.objects.all().order_by("ip_red").filter(celula=celula)
 		
 		context = {
-			'celula': celula,
-			'redes': redes,
 			'celulas': celulas,
+			'celula': celula,
+			'redLans': redLans,
 		}
 		return render(request, template_name, context)
 
