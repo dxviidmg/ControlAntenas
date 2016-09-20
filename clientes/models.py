@@ -5,10 +5,10 @@ from django.core.urlresolvers import reverse
 class Perfil(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	telefono = models.CharField(max_length=10)
-	fecha_registro = models.DateField(auto_now=True)
+	fecha_de_nacimiento = models.DateField()
 
 	def __str__(self):
-		return '{} {}'.format(self.user.first_name, self.user.last_name)
+		return '{}'.format(self.user.username)
 
 class Direccion(models.Model):
 	perfil = models.OneToOneField(Perfil)

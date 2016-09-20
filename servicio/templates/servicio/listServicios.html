@@ -15,6 +15,7 @@
 			<th><p align="center">Usuario</p></th>
 			<th><p align="center">Paquete</p></th>
 			<th><p align="center">Fecha de alta</p></th>
+			<th><p align="center">Estado</p></th>
 			<th colspan="2"><p align="center">Acciones</p></th>
 		</thead>
 
@@ -27,6 +28,7 @@
 				<td>{{servicio.user}}</td>
 				<td>{{servicio.paquete}}</td>
 				<td>{{servicio.fecha}}</td>
+				<td>{{servicio.estado}}</td>
 				<td><a href="{% url 'servicio:updateServicio' servicio.pk %}">Editar</a></td>
 				<td><a href="{% url 'servicio:deleteServicio' servicio.pk %}">Borrar</a></td>
 			</tr>

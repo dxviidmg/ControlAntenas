@@ -7,11 +7,12 @@
 	<div class="fdizquierda2">
 		<h3>Datos generales</h3>
 		<p>Id de usuario: {{user.pk}}</p>
+		<p>Nombre de usuario: {{user.username}}</p>
 		<p>Nombre: {{user.first_name}}</p>
 		<p>Apellidos: {{user.last_name}}</p>
 		<p>Telefono: {{perfil.telefono}}</p> 
 		<p>Correo electronico: {{user.email}}</p>
-		<p>Fecha de registro: {{perfil.fecha_registro}}</p> 
+		<p>Fecha de Nacimiento: {{perfil.fecha_de_nacimiento}}</p> 
 
 		<h3>Domicilio</h3>
 		<p>Calle: {{direccion.calle}}</p>
@@ -27,6 +28,9 @@
 		<p> Id de servicio: {{servicio.id}}</p>
 		<p>Fecha de contrato: {{servicio.fecha}}</p>
 		<p>Paquete: {{servicio.paquete}}</p>
+		<p>Estado de servicio: {{servicio.estado}}</p>
+
+		<h3>Datos de infraestructura</h3>
 		<p>IP de red: {{redlan.ip_red}}</p>
 		<p>Celula: {{celula.ubicacion}}</p>
 		<p>Linea: {{linea.descripcion}}</p>

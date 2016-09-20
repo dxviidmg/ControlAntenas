@@ -10,9 +10,16 @@ class Paquete(models.Model):
 		return self.nombre
 
 class Servicio(models.Model):
+
+	STATE_CHOICES = (
+        ('Suspendido', 'Suspendido'),
+        ('Activado', 'Activado'),
+    )
+
 	fecha = models.DateField(auto_now=True)
 	user = models.OneToOneField(User)
 	paquete = models.ManyToManyField(Paquete)
+	estado = models.CharField(max_length=20, choices=STATE_CHOICES)
 
 	def __str__(self):
-		return '{}'.format(self.pk)
+		return '{}'.format(self.user.username)
