@@ -4,6 +4,7 @@ from .models import *
 from django.db.models import Sum
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
+from servicio.models import *
 
 class ListLineas(View):
 	def get(self, request):
@@ -35,11 +36,13 @@ class DetailCelulaAndListLans(View):
 		celulas = Celula.objects.all().order_by("ubicacion")
 		celula = get_object_or_404(Celula, pk=pk)
 		redLans = RedLan.objects.all().order_by("ip_red").filter(celula=celula)
+		servicio = Servicio.objects.all().filter(pk=pk)
 		
 		context = {
 			'celulas': celulas,
 			'celula': celula,
 			'redLans': redLans,
+			'servicio': servicio,
 		}
 		return render(request, template_name, context)
 

@@ -13,6 +13,7 @@
 		<thead>
 			<th><p align="center">Nombre</p></th>
 			<th><p align="center">Descripción</p></th>
+			<th><p align="center">Ancho de banda de Internet</p></th>
 			<th><p align="center">Precio</p></th>
 			<th colspan="2"><p align="center">Acciones</p></th>
 		</thead>
@@ -24,6 +25,7 @@
 			<tr>
 				<td>{{paquete.nombre}}</td>
 				<td>{{paquete.descripcion}}</td>
+				<td>{{paquete.megas_de_internet}}</td>
 				<td>{{paquete.precio}}</td>
 				<td><a href="{% url 'servicio:updatePaquete' paquete.pk %}">Editar</a></td>
 				<td><a href="{% url 'servicio:deletePaquete' paquete.pk %}">Borrar</a></td>
