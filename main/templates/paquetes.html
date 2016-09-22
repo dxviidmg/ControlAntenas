@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+
+{%load static%}
+
+{%block title%}Inicio{%endblock title%}
+
+{%block content%}
+	
+	<section>
+		<header>
+			<h1>Paquetes</h1>
+		</header>
+	</section> 
+
+
+
+	    <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+            	<br>
+				{%for paquete in paquetes%}
+				<table style="width:100%">
+				<tbody>
+					<tr>
+						<td WIDTH=50% class="text-right">
+							<img src="/media/{{paquete.imagen}}" height="150">
+						</td>
+						<td WIDTH=50%>
+							<h3 class="texto" align="center">{{paquete.nombre}}</h3>
+							<p class="texto" align="center">{{paquete.descripcion}}</p>
+							<p class="texto" align="center">A solo ${{paquete.precio}} mensuales</p>
+						</td>
+					</tr>
+					<br>
+				{%empty%}
+					<h2>Vacio</h2>
+				{%endfor%}
+				</tbody>
+				</table>
+
+            </div>
+        </div>
+
+
+{%endblock content%}

@@ -19,6 +19,7 @@ class Paquete(models.Model):
 	descripcion = models.CharField(max_length=100)
 	megas_de_internet = models.IntegerField()
 	precio = models.IntegerField()
+	imagen = models.ImageField(upload_to='paquetes', null=True, blank=True)
 
 	def __str__(self):
 		return self.nombre

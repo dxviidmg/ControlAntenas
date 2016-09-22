@@ -16,7 +16,7 @@ class ListClientes(View):
 		return render(request, template_name, context)
 
 class DetailCliente(View):
-	def get(self, request, pk):
+	def get(self, request, pkz):
 		template_name="clientes/detailCliente.html"
 		user = get_object_or_404(User, pk=pk)
 		perfil = get_object_or_404(Perfil, user=user)

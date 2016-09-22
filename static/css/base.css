@@ -1,38 +1,8 @@
-html, body{
-  height: 100%;
-  margin-right: 0%;
-  margin-left: 0%;
-}
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
+section {
+    background-color: #bfc9ca ;
     text-align: center;
 }
-table {
-	width:100%;
-  margin: auto;
-}
-h1, h2{
+
+h2 {
 	text-align: center;
-}
-th {
-    height: 50px;
-}
-.fdizquierda {
-	float: left; width: 20%;
-}
-.fdderecha {
-	float: right; width: 80%;
-}
-
-.fdizquierda2 {
-  float: left; width: 50%;
-}
-.fdderecha2 {
-  float: right; width: 50%;
-}
-
-.texto {
-	font-size: 30px;
- 	line-height: 25px;
 }
