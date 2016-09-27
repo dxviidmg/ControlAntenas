@@ -5,7 +5,7 @@ from django.db.models import Sum
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from servicio.models import *
-from .forms import CelulaCreateForm
+from .forms import CelulaCreateForm, RedLanCreateForm
 
 class ListLineas(View):
 	def get(self, request):
@@ -27,8 +27,7 @@ class DetailLineaAndListCelulas(View):
 			'lineas': lineas,
 			'linea': linea,
 			'celulas': celulas,
-			'form': form,
-			
+			'form': form,	
 		}
 		return render(request, template_name, context)
 	def post(self,request, pk):
@@ -36,7 +35,7 @@ class DetailLineaAndListCelulas(View):
 		nueva_celula_form = CelulaCreateForm(request.POST)
 		if nueva_celula_form.is_valid():
 			nueva_celula = nueva_celula_form.save(commit=False)
-			nueva_celula.linea= Linea.objects.get(pk=pk)
+			nueva_celula.linea = Linea.objects.get(pk=pk)
 			nueva_celula.save()
 		return redirect("infraestructura:detailLineaAndlistCelulas", pk=pk) 
 
@@ -47,15 +46,23 @@ class DetailCelulaAndListLans(View):
 		celula = get_object_or_404(Celula, pk=pk)
 		redLans = RedLan.objects.all().order_by("ip_red").filter(celula=celula)
 		servicio = Servicio.objects.all().filter(pk=pk)
-		
-		
+		form = RedLanCreateForm()
 		context = {
 			'celulas': celulas,
 			'celula': celula,
 			'redLans': redLans,
-			'servicio': servicio,	
+			'servicio': servicio,
+			'form': form,
 		}
 		return render(request, template_name, context)
+	def post(self,request, pk):
+		template_name = "infraestructura/detailCelula.html"
+		nueva_redlan_form = RedLanCreateForm(request.POST)
+		if nueva_redlan_form.is_valid():
+			nueva_redlan = nueva_redlan_form.save(commit=False)
+			nueva_redlan.celula = Celula.objects.get(pk=pk)
+			nueva_redlan.save()
+		return redirect("infraestructura:detailCelulaAndListLans", pk=pk) 
 
 class CreateLinea(CreateView):
 	model = Linea

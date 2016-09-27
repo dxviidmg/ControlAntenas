@@ -39,7 +39,11 @@
 
 		<h2>Lista de redes</h2>
 
-		<a href="">Crear Red</a>
+		  <form action="." method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Crear">
+  </form>
    		<p>
 
 		<table>
@@ -48,7 +52,7 @@
 				<th><p align="center">IP de host inicial</p></th>
 				<th><p align="center">IP de host final</p></th>
 				<th><p align="center">IP de mascara de red</p></th>
-				<th><p align="center">Celula</p></th>
+		
 				<th><p align="center">Usuario</p></th>
 				<th><p align="center">Estado de servicio</p></th>
 				<th><p align="center">Acciones</p></th>
@@ -62,7 +66,7 @@
 					<td>{{red.ip_host_inicial}}</td>
 					<td>{{red.ip_host_final}}</td>
 					<td>{{red.ip_mascara_de_red}}</td>
-					<td>{{red.celula}}</td>
+				
 					<td>{{red.servicio}}</td>
 					<td>Aqui falta poner nombre y megas de Paquete</td>
 					<td><a href="">Editar</a></td>
