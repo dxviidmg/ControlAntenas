@@ -11,13 +11,11 @@
 			<h1>Paquetes</h1>
 		</header>
 	</section> 
-
-
-
 	    <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+	    {%for paquete in paquetes%}
+            <div class="col-md-6">
             	<br>
-				{%for paquete in paquetes%}
+				
 				<table style="width:100%">
 				<tbody>
 					<tr>
@@ -39,6 +37,5 @@
 
             </div>
         </div>
-
 
 {%endblock content%}

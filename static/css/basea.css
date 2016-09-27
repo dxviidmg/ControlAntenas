@@ -1,0 +1,24 @@
+section {
+    background-color: #bfc9ca ;
+    text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+#imag {
+	height: 100vh;
+}
+#myCarousel{
+	position: relative;
+}
+
+#puntos {
+position: absolute;
+top: 75%;
+}
+
+.carousel-caption {
+    top: 40%;
+    bottom: auto;
+}
