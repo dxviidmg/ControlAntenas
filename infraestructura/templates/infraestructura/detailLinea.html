@@ -42,7 +42,12 @@
     </tr>
   <h2>Lista de celulas</h2>
 
-    <a href="">Crear Celula</a>
+  <form action="." method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Crear">
+  </form>
+  <p>{{product.desc}}</p>
     <p>
 
   {%for celula in celulas%}

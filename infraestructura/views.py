@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View
 from .models import *
 from django.db.models import Sum
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from servicio.models import *
+from .forms import CelulaCreateForm
 
 class ListLineas(View):
 	def get(self, request):
@@ -21,14 +22,23 @@ class DetailLineaAndListCelulas(View):
 		lineas = Linea.objects.all().order_by("descripcion")
 		linea = get_object_or_404(Linea, pk=pk)
 		celulas = Celula.objects.all().order_by("ubicacion").filter(linea=linea)
-
+		form = CelulaCreateForm()
 		context = {
 			'lineas': lineas,
 			'linea': linea,
 			'celulas': celulas,
+			'form': form,
 			
 		}
 		return render(request, template_name, context)
+	def post(self,request, pk):
+		template_name = "infraestructura/detailLinea.html"
+		nueva_celula_form = CelulaCreateForm(request.POST)
+		if nueva_celula_form.is_valid():
+			nueva_celula = nueva_celula_form.save(commit=False)
+			nueva_celula.linea= Linea.objects.get(pk=pk)
+			nueva_celula.save()
+		return redirect("infraestructura:detailLineaAndlistCelulas", pk=pk) 
 
 class DetailCelulaAndListLans(View):
 	def get(self, request, pk):
@@ -38,11 +48,12 @@ class DetailCelulaAndListLans(View):
 		redLans = RedLan.objects.all().order_by("ip_red").filter(celula=celula)
 		servicio = Servicio.objects.all().filter(pk=pk)
 		
+		
 		context = {
 			'celulas': celulas,
 			'celula': celula,
 			'redLans': redLans,
-			'servicio': servicio,
+			'servicio': servicio,	
 		}
 		return render(request, template_name, context)
 
