@@ -2,40 +2,26 @@
 
 {%load static%}
 
-{%block title%}Inicio{%endblock title%}
+{%block title%}Paquetes{%endblock title%}
 
 {%block content%}
-	
-	<section>
-		<header>
-			<h1>Paquetes</h1>
-		</header>
-	</section> 
-	    <div class="row">
-	    {%for paquete in paquetes%}
-            <div class="col-md-6">
-            	<br>
-				
-				<table style="width:100%">
-				<tbody>
-					<tr>
-						<td WIDTH=50% class="text-right">
-							<img src="/media/{{paquete.imagen}}" height="150">
-						</td>
-						<td WIDTH=50%>
-							<h3 class="texto" align="center">{{paquete.nombre}}</h3>
-							<p class="texto" align="center">{{paquete.descripcion}}</p>
-							<p class="texto" align="center">A solo ${{paquete.precio}} mensuales</p>
-						</td>
-					</tr>
-					<br>
-				{%empty%}
-					<h2>Vacio</h2>
-				{%endfor%}
-				</tbody>
-				</table>
 
-            </div>
-        </div>
+    {%for paquete in paquetes%}
+    <br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
+		    <div class="card">
+		        <img class="card-img-top" src="/media/{{paquete.imagen}}"  width="200" alt="Card image cap">
+		        <div class="card-block">
+		            <h4 class="card-title">{{paquete.nombre}}</h4>
+		            <p class="card-text">{{paquete.descripcion}}</p>
+		            <p class="card-text">{{paquete.precio}}</p>
+		        </div>
+		    </div>
+		</div>
+	</div>
+    {%empty%}
+        <h2>Lista de productos vacia</h2>
+{%endfor%}
 
 {%endblock content%}
