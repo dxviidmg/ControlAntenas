@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View
 from .models import *
 from django.contrib.auth.models import User
@@ -40,11 +40,20 @@ class DetailCliente(View):
 
 class CreateCliente(View):
 	def get(self, request):
-		template_name = "clientes/createClienteUser.html"
-		form = ClienteForm()
-		formdos = PerfilForm()
+		template_name = "clientes/createCliente.html"
+		form = UserCreateForm()
 		context = {
 		'form':form,
-		'formdos': formdos
 		}
 		return render(request,template_name,context)
+
+	def post(self,request):
+		template_name = "clientes/createCliente.html"
+		nuevo_user_form = UserCreateForm(request.POST)
+		if nuevo_user_form.is_valid():
+			nuevo_user = nuevo_user_form.save(commit=False)
+			nuevo_user.save()
+			#perfil = Perfil()
+			#perfil.user = nuevo_user
+			#perfil.save()
+		return redirect("clientes:listClientes") 

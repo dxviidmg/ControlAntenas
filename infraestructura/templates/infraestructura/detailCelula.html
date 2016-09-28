@@ -16,7 +16,7 @@
 			<h2>Vacio</h2>
 
 		{%endfor%}
-		<p><a href="{%url 'infraestructura:detailLineaAndlistCelulas' celula.pk%}">Regresa</a></p>
+		<p><a href="">Regresa</a></p>
 	</div>
 	<div class="fdderecha">
 
@@ -54,8 +54,7 @@
 				<th><p align="center">IP de mascara de red</p></th>
 		
 				<th><p align="center">Usuario</p></th>
-				<th><p align="center">Estado de servicio</p></th>
-				<th><p align="center">Acciones</p></th>
+				<th><p align="center">Datos de servicio</p></th>
 			</thead>
 
 			{%for red in redLans%}
@@ -68,8 +67,7 @@
 					<td>{{red.ip_mascara_de_red}}</td>
 				
 					<td>{{red.servicio}}</td>
-					<td>Aqui falta poner nombre y megas de Paquete</td>
-					<td><a href="">Editar</a></td>
+					<td>Aqui falta poner nombre, estado y megas de Paquete</td>
 				</tr>
 			</tbody>
 

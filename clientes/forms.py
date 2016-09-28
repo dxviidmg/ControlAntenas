@@ -2,10 +2,15 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import *
 
-class ClienteForm(forms.ModelForm):
+class UserCreateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email',)
+        fields = ('username', 'first_name', 'last_name', 'email',)
+
+    def signup(self, request, user):
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.save()
 
 class PerfilForm(forms.ModelForm):
     class Meta:

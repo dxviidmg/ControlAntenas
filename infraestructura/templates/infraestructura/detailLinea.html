@@ -40,15 +40,17 @@
       <th><p align="center">Ancho de Banda</p></th>
       <th colspan="3"><p align="center">Acciones</p></th>
     </tr>
-  <h2>Lista de celulas</h2>
+
+  <h2>Crear celula</h2>
+
 
   <form action="." method="post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Crear">
   </form>
-  <p>{{product.desc}}</p>
-    <p>
+
+  <h2>Lista de celulas</h2>
 
   {%for celula in celulas%}
 
