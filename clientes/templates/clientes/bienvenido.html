@@ -1,0 +1,5 @@
+<h2>Bienvenido a tu perfil {{request.user.first_name}} {{request.user.last_name}}</h2>
+
+<a href="{%url 'clientes:logout'%}">
+	<button>Cerrar tu sesión</button>
+</a>

@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block title%}Inicia sesión{%endblock title%}
+
+{%block content%}
+
+	<div class="row">
+		<div class="col-md-2 col-md-offset-5 center">
+
+		<form action="." method="POST" name="auth" enctype='multipart/form-data'>
+			{% csrf_token %}
+			<div>
+				<br>
+				<label>Nombre de usuario, e-mail o numero de telefono</label>
+				<input type="text" name="username">
+			</div>
+		 	<div>
+		 		<br>
+				<label>Contraseña</label>
+				<input type="password" name="password">
+			</div>
+			<br>
+			<button type="submit">Login</button>
+		</form>
+
+		</div>
+	</div>
+{%endblock content%}

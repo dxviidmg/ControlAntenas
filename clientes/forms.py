@@ -15,7 +15,7 @@ class UserCreateForm(forms.ModelForm):
 class PerfilForm(forms.ModelForm):
     class Meta:
         model = Perfil
-        fields = ('telefono',)
+        fields = ('telefono', 'fecha_de_nacimiento')
 
 class DomicilioForm(forms.ModelForm):
     class Meta:
