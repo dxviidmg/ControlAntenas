@@ -1,11 +1,11 @@
 {%extends 'baseadmin.html'%}
 
-{%block title%}Datos de linea{%endblock title%}
+{%block title%}Información de la celula: {{celula.ubicacion}}{%endblock title%}
 
 {%block content%}
 
 	<div class="fdizquierda" align="center">
-		<h3>Lista de Celulas</h3>
+		<h3>Lista de celulas</h3>
 
 		{%for cel in celulas%}
 
@@ -20,31 +20,29 @@
 	</div>
 	<div class="fdderecha">
 
-		<h2>Información de Celula</h2>
+		<h2>Información de la celula: {{celula.ubicacion}}</h2>
 
 		<table>
 			<thead>				
-				<th><p align="center">Ubicación</p></th>
 				<th><p align="center">Ancho de Banda</p></th>
 				<th><p align="center">Linea</p></th>
 			</thead>
 			<tbody>
 				<tr>
-					<td>{{celula.ubicacion}}</td>
 					<td>{{celula.ancho_de_banda}}</td>
 					<td>{{celula.linea}}</td>
 				</tr>
 			</tbody>
 		</table>
 
-		<h2>Lista de redes</h2>
+		<h2>Crear red</h2>
 
 		  <form action="." method="post">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Crear">
   </form>
-   		<p>
+   		<h2>Lista de redes</h2>
 
 		<table>
 			<thead>

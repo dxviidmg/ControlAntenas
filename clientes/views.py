@@ -58,19 +58,32 @@ class CreateCliente(View):
 		nuevo_user_form = UserCreateForm(request.POST)
 		nuevo_perfil_form = PerfilForm(request.POST)
 		nuevo_domicilio_form = DomicilioForm(request.POST)
-		if nuevo_user_form.is_valid() and nuevo_perfil_form.is_valid() and nuevo_domicilio_form.is_valid():
+		if nuevo_user_form.is_valid(): 
 			nuevo_user = nuevo_user_form.save(commit=False)
+			#print(nuevo_user)
 			nuevo_user.save()
 
+		if nuevo_perfil_form.is_valid():
 			nuevo_perfil = Perfil()
+		
 			nuevo_perfil.user = nuevo_user
+			nuevo_perfil.telefono = nuevo_user
+			#nuevo_perfil.fecha_de_nacimiento = nuevo_user
 			nuevo_perfil.save()
 
+		if nuevo_domicilio_form.is_valid():
 			nuevo_domicilio = Direccion()
 			nuevo_domicilio.perfil = nuevo_perfil
+			nuevo_domicilio.calle = nuevo_perfil
+			nuevo_domicilio.numero_exterior = nuevo_perfil
+			nuevo_domicilio.colonia = nuevo_perfil
+			nuevo_domicilio.numero_interior = nuevo_perfil
+			nuevo_domicilio.municipio = nuevo_perfil
+			nuevo_domicilio.estado = nuevo_perfil
+			nuevo_domicilio.codigo_postal = nuevo_perfil
+
 			nuevo_domicilio.save()
 		return redirect("clientes:listClientes")
-
 
 from django.contrib.auth import authenticate, login
 

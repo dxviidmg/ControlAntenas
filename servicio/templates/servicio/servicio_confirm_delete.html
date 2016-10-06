@@ -1,15 +1,15 @@
 {%extends 'baseadmin.html'%}
 
-{%block title%}Lista de lineas{%endblock title%}
+{%block title%}Eliminar servicio{%endblock title%}
 
 {%block content%}
 
 	<form method="post">
 		{%csrf_token%}
-		<h2>¿Estas seguro que deseas borrar el servicio {{object}}?</h2>
+		<h3>¿Estas seguro que deseas borrar el servicio {{object}}?</h3>
 		<input class="btn green" type="submit" value="Si, Seguro">
-
+		<a href=href="{%url 'servicio:listServicios' %}">Cancelar</a>
 	</form>
-	<a href=href="{%url 'servicio:listServicios' %}">Cancelar</a>
+
 
 {%endblock content%}

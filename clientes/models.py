@@ -8,7 +8,7 @@ class Perfil(models.Model):
 	fecha_de_nacimiento = models.DateField(blank=True, null=True)
 
 	def __str__(self):
-		return '{}'.format(self.user.username)
+		return '{}'.format(self.user)
 
 class Direccion(models.Model):
 	perfil = models.OneToOneField(Perfil)

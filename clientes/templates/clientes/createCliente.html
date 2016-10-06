@@ -1,13 +1,15 @@
 {%extends 'baseadmin.html'%}
 
-{%block title%}Lista de lineas{%endblock title%}
+{%block title%}Crear cliente{%endblock title%}
 
 {%block content%}
 
 	<form action="." method="post">
 			{%csrf_token%}
+		<h3>Usuario</h3>
 			{{formuser.as_p}}
 			{{formperfil.as_p}}
+		<h3>Domicilio</h3>
 			{{formdomicilio.as_p}}
 			<input type="submit" value="Crear Usuario">
 	</form>

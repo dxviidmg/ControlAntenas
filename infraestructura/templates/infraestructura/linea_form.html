@@ -1,9 +1,11 @@
 {%extends 'baseadmin.html'%}
 
-{%block title%}Lista de lineas{%endblock title%}
+{%block title%}Crear o editar linea{%endblock title%}
 
 {%block content%}
 
+	<h3>Crear o editar lineas</h3>
+	<br>
 	<form method="post" enctype="multipart/form-data">
 		{%csrf_token%}
 		{{form.as_p}}

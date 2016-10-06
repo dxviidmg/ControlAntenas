@@ -1,11 +1,11 @@
 {%extends 'baseadmin.html'%}
 
-{%block title%}Datos de linea{%endblock title%}
+{%block title%}Información de la linea: {{linea.descripcion}}{%endblock title%}
 
 {%block content%}
 
 <div class="fdizquierda" align="center">
-  <h3>Lista de Lineas</h3>
+  <h3>Lista de lineas</h3>
 
     {%for lin in lineas%}
       <p><a <a href="{%url 'infraestructura:detailLineaAndlistCelulas' lin.pk%}">{{lin.descripcion}}</a></p>
@@ -20,16 +20,14 @@
 </div>
 <div class="fdderecha">
 
-<h2>Información de Linea</h2>
+<h2>Información de la linea: {{linea.descripcion}}</h2>
 
   <table>
     <tr>
-      <th><p align="center">Descripción</p></th>
       <th><p align="center">Distribuidor</p></th>
       <th><p align="center">Ancho de Banda</p></th>
     </tr>
     <tr>
-      <td>{{linea.descripcion}}</td>
       <td>{{linea.distribuidor}}</td>
       <td>{{linea.ancho_de_banda}}</td>     
     </tr>  

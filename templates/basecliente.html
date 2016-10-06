@@ -48,17 +48,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="{%url 'main:qs'%}">Nosotros</a>
-                    </li>
-                    <li>
-                        <a href="{%url 'main:paquetes'%}">Paquetes</a>
-                    </li>
-                    <li>
-                        <a href="{%url 'main:contacto'%}">Contacto</a>
+                        <a href="">Realizar Pago</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{%url 'clientes:login'%}">Iniciar sesion</a></li>
+                    <li><a href="{%url 'clientes:logout'%}">Cerrar sesión</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -71,7 +65,6 @@
             <h1>{%block title%}{%endblock title%}</h1>
         </header>
     </section> 
-    
         <div class="row">
         {%block content%}{%endblock content%}
         </div>
