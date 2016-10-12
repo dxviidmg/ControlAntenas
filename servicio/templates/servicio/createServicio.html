@@ -1,0 +1,15 @@
+{%extends 'baseadmin.html'%}
+
+{%block title%}Crear servicio{%endblock title%}
+
+{%block content%}
+	{{pk}}
+	{{user.username}}
+	<form action="." method="post">
+		<h3>Nuevo servicio</h3>
+			{%csrf_token%}
+			{{formservicio.as_p}}
+			<input type="submit" value="Crear servicio">
+	</form>
+
+{%endblock content%}

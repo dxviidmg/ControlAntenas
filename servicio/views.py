@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View
 from .models import *
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
+from .forms import *
+from django.contrib.auth.models import User
 
 class ListServicios(View):
 	def get(self, request):
@@ -36,10 +38,29 @@ class DeletePaquete(DeleteView):
 	model = Paquete
 	success_url = reverse_lazy('servicio:listPaquetes')
 
-class CreateServicio(CreateView):
-	model = Servicio
-	success_url = reverse_lazy('servicio:listServicios')
-	fields = ['user', 'paquete', 'estado']
+class CreateServicio(View):
+	def get(self, request, pk):
+		template_name = "servicio/createServicio.html"
+		formservicio = ServicioForm()
+		user = get_object_or_404(User, pk=pk)
+		context = {
+		'formservicio': formservicio,
+		'pk': pk,
+		'user': user,
+		}
+		return render(request,template_name,context)
+	def post(self,request, pk):
+		
+		user = get_object_or_404(User, pk=pk)
+
+		template_name = "servicio/createServicio.html"
+		nuevo_servicio_form = ServicioForm(request.POST)
+		if nuevo_servicio_form.is_valid(): 
+			nuevo_servicio = Servicio()
+			#nuevo_servicio.user = user.username
+			nuevo_servicio = nuevo_servicio_form.save(commit=False)
+			nuevo_servicio.save()
+		return redirect("servicio:listServicios")
 
 class UpdateServicio(UpdateView):
 	model = Servicio

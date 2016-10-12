@@ -2,7 +2,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-	url(r'^administracion/servicios/nuevo/$', views.CreateServicio.as_view(), name="createServicio"),
+	url(r'^administracion/servicios/nuevo/(?P<pk>\d+)/$', views.CreateServicio.as_view(), name="createServicio"),
  	url(r'^administracion/servicios/actualizar/(?P<pk>\d+)/$', views.UpdateServicio.as_view(), name="updateServicio"),
 	url(r'^servicios/borrar/(?P<pk>\d+)/$', views.DeleteServicio.as_view(), name="deleteServicio"),
  	url(r'^administracion/servicios', views.ListServicios.as_view(),name="listServicios"),

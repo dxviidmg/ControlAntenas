@@ -7,6 +7,7 @@ from servicio.models import *
 from infraestructura.models import *
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 class ListClientes(View):
 	def get(self, request):
@@ -69,6 +70,9 @@ class CreateCliente(View):
 			nuevo_perfil.user = nuevo_user
 			nuevo_perfil.telefono = nuevo_user
 			#nuevo_perfil.fecha_de_nacimiento = nuevo_user
+
+
+
 			nuevo_perfil.save()
 
 		if nuevo_domicilio_form.is_valid():
@@ -83,7 +87,7 @@ class CreateCliente(View):
 			nuevo_domicilio.codigo_postal = nuevo_perfil
 
 			nuevo_domicilio.save()
-		return redirect("clientes:listClientes")
+		return redirect("servicio:createServicio", pk=nuevo_user.pk)
 
 from django.contrib.auth import authenticate, login
 
