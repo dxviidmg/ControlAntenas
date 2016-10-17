@@ -1,28 +1,28 @@
-{%extends 'base.html'%}
+{%extends 'index.html'%}
 
 {%block title%}Inicia sesión{%endblock title%}
 
 {%block content%}
 
-	<div class="row">
-		<div class="col-md-2 col-md-offset-5 center">
+<div class="col-lg-4 col-lg-offset-1">
 
-		<form action="." method="POST" name="auth" enctype='multipart/form-data'>
-			{% csrf_token %}
-			<div>
-				<br>
-				<label>Nombre de usuario, e-mail o numero de telefono</label>
-				<input type="text" name="username">
-			</div>
-		 	<div>
-		 		<br>
-				<label>Contraseña</label>
-				<input type="password" name="password">
-			</div>
-			<br>
-			<button type="submit">Login</button>
-		</form>
+	        <form action="." method="POST" name="auth" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <div class="form-group row">
+                <p>Usuario</p>
+                <div class="col-lg-2">
+                    <input class="form-control" name="username" type="text" id="example-text-input">
+                </div>
+            </div>
 
-		</div>
-	</div>
+            <div class="form-group row">
+                <p>Contraseña</p>
+                <div class="col-lg-2">
+                    <input class="form-control" name="password" type="password" id="example-password-input">
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-default btn-lg" type="submit">Login</button>
+        </form>
+</div>
 {%endblock content%}

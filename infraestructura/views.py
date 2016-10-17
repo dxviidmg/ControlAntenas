@@ -42,16 +42,19 @@ class DetailLineaAndListCelulas(View):
 class DetailCelulaAndListLans(View):
 	def get(self, request, pk):
 		template_name = "infraestructura/detailCelula.html"
+
 		celulas = Celula.objects.all().order_by("ubicacion")
 		celula = get_object_or_404(Celula, pk=pk)
+		
 		redLans = RedLan.objects.all().order_by("ip_red").filter(celula=celula)
-		servicio = Servicio.objects.all().filter(pk=pk)
+		redLan = get_object_or_404(RedLan, pk=pk)
+
 		form = RedLanCreateForm()
 		context = {
 			'celulas': celulas,
 			'celula': celula,
 			'redLans': redLans,
-			'servicio': servicio,
+
 			'form': form,
 		}
 		return render(request, template_name, context)

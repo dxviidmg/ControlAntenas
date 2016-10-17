@@ -38,8 +38,8 @@ class Servicio(models.Model):
 	)
 
 	user = models.OneToOneField(User)
-	fecha_de_inicio_de_servicio = models.DateField(null=True, blank=True)
-	paquete = models.ManyToManyField(Paquete)
+	inicio_de_servicio = models.DateField(null=True, blank=True)
+	paquete = models.ForeignKey(Paquete)
 	estado = models.CharField(max_length=30, choices=Estado_CHOICES)
 
 	def __str__(self):

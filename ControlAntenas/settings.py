@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'clientes',
     'infraestructura',
     'servicio',
-    'main',
 ]
 
 MIDDLEWARE = [
@@ -130,4 +129,4 @@ MEDIA_URL = '/media/'
 
 from django.core.urlresolvers import reverse_lazy
 
-LOGOUT_REDIRECT_URL = reverse_lazy('main:home')
+LOGOUT_REDIRECT_URL = reverse_lazy('clientes:login')

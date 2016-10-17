@@ -70,9 +70,6 @@ class CreateCliente(View):
 			nuevo_perfil.user = nuevo_user
 			nuevo_perfil.telefono = nuevo_user
 			#nuevo_perfil.fecha_de_nacimiento = nuevo_user
-
-
-
 			nuevo_perfil.save()
 
 		if nuevo_domicilio_form.is_valid():
@@ -107,8 +104,6 @@ def login_user(request):
 			return redirect("clientes:bienvenido")
 	else:
 		return render(request,template_name)
-
-
 
 class Bienvenido(View):
 	@method_decorator(login_required)
