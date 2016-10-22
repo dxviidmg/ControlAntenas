@@ -12,7 +12,7 @@ class Perfil(models.Model):
 
 class Direccion(models.Model):
 	perfil = models.OneToOneField(Perfil)
-	calle = models.CharField(max_length=20)
+	calle = models.CharField(max_length=30)
 	numero_exterior = models.CharField(max_length=10)
 	numero_interior = models.CharField(max_length=10, blank=True, null=True)
 	colonia = models.CharField(max_length=20)
@@ -23,5 +23,3 @@ class Direccion(models.Model):
 	def __str__(self):
 		return '{} {} {} {} {}'.format(self.calle, self.numero_exterior, self.numero_interior,
 			self.colonia, self.municipio)
-	
-# Create your models here.

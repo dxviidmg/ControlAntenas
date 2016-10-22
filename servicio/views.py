@@ -44,9 +44,9 @@ class CreateServicio(View):
 		formservicio = ServicioForm()
 		user = get_object_or_404(User, pk=pk)
 		context = {
-		'formservicio': formservicio,
-		'pk': pk,
-		'user': user,
+			'formservicio': formservicio,
+			'pk': pk,
+			'user': user,
 		}
 		return render(request,template_name,context)
 	def post(self,request, pk):
@@ -59,16 +59,14 @@ class CreateServicio(View):
 			nuevo_servicio = nuevo_servicio_form.save(commit=False)
 			nuevo_servicio.user = user
 			nuevo_servicio.save()
-			#nuevo_servicio.paquete = paquete
-			nuevo_servicio_form.save_m2m()
-		return redirect("servicio:listServicios")
+		return redirect("pagos:createPagoInstalacion", pk=nuevo_servicio.pk)
 
 class UpdateServicio(UpdateView):
 	model = Servicio
 	success_url = reverse_lazy('servicio:listServicios')
 	fields = ['user', 'paquete', 'estado', 'inicio_de_servicio' ]
 
-
 class DeleteServicio(DeleteView):
 	model = Servicio
 	success_url = reverse_lazy('servicio:listServicios')
+

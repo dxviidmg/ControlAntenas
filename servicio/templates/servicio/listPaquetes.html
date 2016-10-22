@@ -7,7 +7,6 @@
 	<h1>Lista de paquetes</h1>
 
     <a href="{% url 'servicio:createPaquete'%}">Crear Paquete</a>
-    <p>
 
 	<table>
 		<thead>
@@ -18,7 +17,6 @@
 			<th><p align="center">Mensualidad</p></th>
 			<th colspan="2"><p align="center">Acciones</p></th>
 		</thead>
-
 
 	{%for paquete in paquetes%}
 

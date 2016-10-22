@@ -5,7 +5,7 @@ from .models import *
 class UserCreateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email',)
+        fields = ('first_name', 'last_name', 'email',)
 
 class PerfilForm(forms.ModelForm):
     class Meta:

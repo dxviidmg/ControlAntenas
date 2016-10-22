@@ -47,14 +47,12 @@ class DetailCelulaAndListLans(View):
 		celula = get_object_or_404(Celula, pk=pk)
 		
 		redLans = RedLan.objects.all().order_by("ip_red").filter(celula=celula)
-		redLan = get_object_or_404(RedLan, pk=pk)
 
 		form = RedLanCreateForm()
 		context = {
 			'celulas': celulas,
 			'celula': celula,
 			'redLans': redLans,
-
 			'form': form,
 		}
 		return render(request, template_name, context)

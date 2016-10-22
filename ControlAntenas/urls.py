@@ -18,6 +18,7 @@ from django.contrib import admin
 from clientes import urls as clientesUrls
 from infraestructura import urls as infraestructuraUrls
 from servicio import urls as servicioUrls
+from pagos import urls as pagosUrls
 
 from django.views.static import serve
 from django.conf import settings
@@ -27,6 +28,7 @@ urlpatterns = [
     url(r'^', include(clientesUrls, namespace="clientes")),
     url(r'^', include(infraestructuraUrls, namespace="infraestructura")),
     url(r'^', include(servicioUrls, namespace="servicio")),
+    url(r'^', include(pagosUrls, namespace="pagos")),
     url(
             regex=r'^media/(?P<path>.*)$',
             view=serve,

@@ -1,0 +1,60 @@
+{%extends 'baseadmin.html'%}
+
+{%block title%}Historial{%endblock title%}
+
+{%block content%}
+
+	<table>
+		<thead>
+			<tr>
+				<th><p align="center">Fecha</p></th>
+				<th>Concepto</th>
+				<th><p align="center">Cantidad</p></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{pagoInstalacion.fecha}}</td>
+				<td>pago de instalacion</td>
+				<td>${{pagoInstalacion.monto}}
+			</tr>
+		{%for pago in pagosRenta%}
+			<tr>
+				<td>{{pago.fecha}}</td>
+				<td>Renta de {% if pago.mes == 1%}
+  					Enero
+  					{%elif pago.mes == 2%}
+  					Febrero
+  					{%elif pago.mes == 3%}
+  					Marzo
+  					{%elif pago.mes == 4%}
+  					Abril
+  					{%elif pago.mes == 5%}
+  					Mayo
+  					{%elif pago.mes == 6%}
+  					Junio
+  					{%elif pago.mes == 7%}
+  					Julio
+  					{%elif pago.mes == 8%}
+  					Agosto
+  					{%elif pago.mes == 9%}
+  					Septiembre
+  					{%elif pago.mes == 10%}
+  					Octubre
+ 					{%elif pago.mes == 11%}
+  					Noviembre
+   					{%elif pago.mes == 12%}
+  					Diciembre
+					{% endif %} {{pago.año}}</td>
+				<td>{{pago.monto}}</td>
+			</tr>
+		</tbody>
+
+		{%empty%}
+
+	</table>
+	<h2>Lista vacia</h2>
+
+		{%endfor%}
+
+{%endblock content%}

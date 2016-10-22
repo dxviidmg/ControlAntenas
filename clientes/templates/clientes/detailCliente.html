@@ -6,7 +6,6 @@
 
 	<div class="fdizquierda2">
 		<h3>Datos generales</h3>
-		<p>Id de usuario: {{user.pk}}</p>
 		<p>Nombre de usuario: {{user.username}}</p>
 		<p>Nombre: {{user.first_name}}</p>
 		<p>Apellidos: {{user.last_name}}</p>
@@ -25,17 +24,20 @@
 	</div>
 	<div class="fdderecha2">
 		
-		
 		<h3>Servicio</h3>
 		<p>Id de servicio: {{servicio.id}}</p>
 		<p>Fecha de contrato: {{servicio.inicio_de_servicio}}</p>
 		<p>Paquete: {{servicio.paquete}}</p>
 		<p>Estado de servicio: {{servicio.estado}}</p>
 
+		{%if redlan.ip_red and celula.ubicacion and linea.descripcion%}
 		<h3>Datos de infraestructura</h3>
 		<p>IP de red: {{redlan.ip_red}}</p>
 		<p>Celula: {{celula.ubicacion}}</p>
 		<p>Linea: {{linea.descripcion}}</p>
+		{%else%}
+		<h3>Instalación pendiente</h3>
+		{%endif%}
 
 	</div>
 

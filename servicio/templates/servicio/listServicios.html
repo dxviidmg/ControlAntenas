@@ -5,7 +5,6 @@
 {%block content%}
 
 	<h1>Lista de contratos</h1>
-    <p>
 
 	<table>
 		<thead>
@@ -16,7 +15,6 @@
 			<th><p align="center">Estado</p></th>
 			<th colspan="2"><p align="center">Acciones</p></th>
 		</thead>
-
 
 	{%for servicio in servicios%}
 
@@ -29,6 +27,8 @@
 				<td>{{servicio.estado}}</td>
 				<td><a href="{% url 'servicio:updateServicio' servicio.pk %}">Editar</a></td>
 				<td><a href="{% url 'servicio:deleteServicio' servicio.pk %}">Borrar</a></td>
+				<td><a href="{% url 'pagos:createPagoRenta' servicio.pk %}">Hacer pago</a></td>
+				<td><a href="{% url 'pagos:historial' servicio.pk %}">Historial</a></td>
 			</tr>
 		</tbody>
 
