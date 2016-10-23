@@ -1,1 +1,6 @@
-ultimospagos.html
+{%for pago in pagos%}
+{{pago.servicio}} {{pago.mes}}, {{pago.año}}
+<p>
+{%empty%}
+<h2>vacio</h2>
+{%endfor%}

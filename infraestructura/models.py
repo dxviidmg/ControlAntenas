@@ -29,3 +29,8 @@ class RedLan(models.Model):
 
 	def __str__(self):
 		return self.ip_red
+
+class Empresa(models.Model):
+	email = models.EmailField(blank=True,null=True)
+	telefono = models.CharField(max_length=20, blank=True,null=True)
+	direccion = models.CharField(max_length=100, blank=True,null=True)

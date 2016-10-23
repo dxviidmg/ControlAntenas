@@ -25,6 +25,7 @@ class CreatePagoInstalacion(View):
 		nuevo_pago_inst.monto = 200
 		nuevo_pago_inst.save()
 		return redirect("servicio:listServicios")
+#		regresar a detailcliente
 #		return redirect("clientes:DetailCliente", pk=user.pk)
 
 class CreatePagoRenta(View):
@@ -70,15 +71,15 @@ class Historial(View):
 		}
 		return render(request,template_name,context)
 
-
 class ListUltimosPagos(View):
 	def get(self, request):
 		template_name = "pagos/ultimospagos.html"
 		
-		servicios = Servicio.objects.all()
-		pagosRenta = PagoRenta.objects.all().filter(servicio=servicio).order_by("año", "mes")
+		#Hacer reporte
+		#Ultimo pago de cada usuario
+		pagos = PagoRenta.objects.all().order_by("servicio")
 		
 		context = {
-			'servicios': servicios,
+			'pagos': pagos,
 		}
 		return render(request, template_name, context)

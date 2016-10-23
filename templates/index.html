@@ -1,5 +1,7 @@
 {%load static%}
 {%load paquete_tags%}
+{%load empresa_tags%}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -108,23 +110,22 @@
     <!-- Download Section -->
     <section id="paquetes" class="row">
         <div class="download-section">
-            <div class="container">
+            <div class="container content text-center">
                 <div class="col-lg-8 col-lg-offset-2">
-                    
+                    <h2>Paquetes</h2>
                     {%paquetes as packs%}
                     {%for producto in packs%}
-                    <div class="col-lg-4" style="display: inline-block;">
+                    <div class="col-lg-1" style="display: inline-block;">
 
-                        <div class="card card-block">
-                            <img class="card-img-top" src="/media/{{producto.imagen}}" width="270" height="270" height="150" alt="Card image cap">
-                            <h3 class="card-title">{{producto.nombre}}</h3>
-                            <p class="card-text">Precio: ${{producto.precio}}0</p>
+                        <div class="card card-block"¿">
+                        <!-- Contact Section     <img class="card-img-top" src="/media/{{producto.imagen}}" width="270" height="150" alt="Card image cap"> -->    <p>
+                            <h4 class="card-title">{{producto.nombre}}</h4>
+                            <p class="card-title">${{producto.precio}}.00 al mes</p>
+                            
                         </div>                            
                     </div>
                     {%empty%}
                     
-                    
-       
                 <h2>Lista de paquetes vacia</h2>
                     
                     {%endfor%}
@@ -139,11 +140,23 @@
     <section id="contact" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
+
                 <h2>Contacto</h2>
-                <p>Domicilio: Morelos #40, Col. Centro, Actopan, Hidalgo</p>
-                <p>Telefono: 7721231231</p>
-                <p>Correo electrónico: <a href="mailto:feedback@startbootstrap.com">grak@hotmail.com</a>
+
+                {%datosempresa as infoempresa%}
+                {%for info in infoempresa%}
+                
+                <p>Domicilio: {{info.direccion}}</p>
+                <p>{{info.email}}</p>
+                <p>Telefono: {{info.telefono}}</p>
+                <p>Correo electrónico: <a href="mailto:feedback@startbootstrap.com">{{info.email}}</a>
                 </p>
+
+                {%empty%}
+                
+                <h2>Sin datos de la empresa</h2>
+                
+                {%endfor%}
  
             </div>
         </div>
