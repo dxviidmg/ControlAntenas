@@ -18,7 +18,14 @@
 	      		<ul class="nav navbar-nav navbar-right">
 	       			<li><a href="{%url 'infraestructura:listLineas'%}">Infraestructura</a></li>
 	        		<li><a href="{%url 'servicio:listServicios'%}">Servicios</a></li>
-	        		<li><a href="">Reportes</a></li> 
+	        		<li class="dropdown">
+        				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes
+        				<span class="caret"></span></a>
+        				<ul class="dropdown-menu">
+          					<li><a href="{%url 'pagos:listPagosPorMes'%}">Pagos del ultimo mes</a></li>
+          					<li><a href="{%url 'pagos:listUltimosPagos'%}">Ultimos pagos por cliente</a></li>
+        				</ul>
+      				</li>
 	        		<li><a href="{%url 'clientes:listClientes'%}">Clientes</a></li>
 	        		<li><a href="{%url 'servicio:listPaquetes'%}">Paquetes</a></li>  
 	        		<li><a href="{%url 'clientes:logout'%}">Cerrar sesión</a></li>  
@@ -31,6 +38,10 @@
 		<div class="col-md-10 col-md-offset-1 center">{%block content%}{%endblock content%}</div>
 	</div>
 
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</body>
+	    <!-- jQuery -->
+    <script src="{%static 'js/jquery.js'%}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
+
 </html>

@@ -5,8 +5,8 @@ from django.utils import timezone
 class PagoInstalacion(models.Model):
 	servicio = models.OneToOneField(Servicio)
 	monto = models.IntegerField()
-	fecha = models.DateTimeField(default=timezone.now)
-
+	fecha = models.DateField(default=timezone.now)
+	hora = models.TimeField(default=timezone.now)
 	def __str__(self):
 		return '{}'.format(self.fecha)
 
@@ -29,7 +29,8 @@ class PagoRenta(models.Model):
 	mes = models.IntegerField(choices=Mes_CHOICES)
 	año = models.IntegerField()
 	monto = models.IntegerField()
-	fecha = models.DateTimeField(default=timezone.now)
+	fecha = models.DateField(default=timezone.now)
+	hora = models.TimeField(default=timezone.now)
 
 	def __str__(self):
 		return '{}{}{}'.format(self.servicio, self.mes, self.año)

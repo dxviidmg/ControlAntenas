@@ -1,6 +1,58 @@
-{%for pago in pagos%}
-{{pago.servicio}} {{pago.mes}}, {{pago.año}}
-<p>
+{%extends 'baseadmin.html'%}
+
+{%block title%}Lista de clientes{%endblock title%}
+
+{%block content%}
+
+  <table>
+    <thead>
+      <tr>
+        <th><p align="center">Servicio</p></th>
+        <th><p align="center">Fecha</p></th>
+        <th><p align="center">Concepto</p></th>
+      </tr>
+    </thead>
+
+{%for ultimopago in ultimospagos%}
+
+    <tbody>
+      <tr>  
+        <td>{{ultimopago.pago.servicio}}</td>  
+        <td>{{ultimopago.pago.fecha}}</td>
+        <td>
+          Renta de {% if ultimopago.pago.mes == 1%}
+            Enero
+            {%elif ultimopago.pago.mes == 2%}
+            Febrero
+            {%elif ultimopago.pago.mes == 3%}
+            Marzo
+            {%elif ultimopago.pago.mes == 4%}
+            Abril
+            {%elif ultimopago.pago.mes == 5%}
+            Mayo
+            {%elif ultimopago.pago.mes == 6%}
+            Junio
+            {%elif ultimopago.pago.mes == 7%}
+            Julio
+            {%elif ultimopago.pago.mes == 8%}
+            Agosto
+            {%elif ultimopago.pago.mes == 9%}
+            Septiembre
+            {%elif ultimopago.pago.mes == 10%}
+            Octubre
+          {%elif ultimopago.pago.mes == 11%}
+            Noviembre
+            {%elif ultimopago.pago.mes == 12%}
+            Diciembre
+          {% endif %} {{ultimopago.pago.año}}</td>
+    
+      </tr>
+</tbody>
+
 {%empty%}
+
+</table>
 <h2>vacio</h2>
 {%endfor%}
+
+{%endblock content%}

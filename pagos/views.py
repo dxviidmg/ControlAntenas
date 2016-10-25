@@ -4,6 +4,7 @@ from servicio.models import *
 from .models import *
 from .forms import *
 from django.contrib.auth.models import User
+from datetime import date, timedelta, datetime
 
 class CreatePagoInstalacion(View):
 	def get(self, request, pk):
@@ -76,10 +77,48 @@ class ListUltimosPagos(View):
 		template_name = "pagos/ultimospagos.html"
 		
 		#Hacer reporte
-		#Ultimo pago de cada usuario
+		servicios = Servicio.objects.all()
+		ultimospagos = []
+		for servicio in servicios:
+			ultimospagos.append({'pago':PagoRenta.objects.all().filter(servicio=servicio).last()}) 
+		
 		pagos = PagoRenta.objects.all().order_by("servicio")
 		
 		context = {
 			'pagos': pagos,
+			'ultimospagos': ultimospagos,
 		}
+		return render(request, template_name, context)
+
+class ListPagosPorMes(View):
+	def get(self, request):
+		template_name="pagos/reportepagospormes.html"
+		hoy = date.today()
+		pagosrenta = PagoRenta.objects.all().order_by("fecha")
+		pagosinstalacion = PagoInstalacion.objects.all().order_by("fecha")
+		
+		ahora = datetime.now()
+		primerodelmes = date.today() - timedelta(days=ahora.day-1)
+
+		pagosrentahechos = []
+		pagosinstalacionhechos = []
+		
+		totalpagorenta = 0
+		for pagorenta in pagosrenta:
+			if pagorenta.fecha >= primerodelmes and pagorenta.fecha <= hoy:
+				pagosrentahechos.append(pagorenta)
+				totalpagorenta = totalpagorenta + pagorenta.monto
+
+		totalpagoinstalacion = 0
+		for pagoinstalacion in pagosinstalacion:
+			if pagoinstalacion.fecha <= hoy:
+				pagosinstalacionhechos.append(pagoinstalacion)
+				totalpagoinstalacion = totalpagoinstalacion + pagoinstalacion.monto
+		sumadepagos = totalpagorenta + totalpagoinstalacion
+		context = {
+			'pagosinstalacionhechos': pagosinstalacionhechos,
+			'pagosrentahechos':pagosrentahechos,
+			'sumadepagos': sumadepagos,
+			'primerodelmes': primerodelmes,
+			}
 		return render(request, template_name, context)

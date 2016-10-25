@@ -1,0 +1,84 @@
+{%extends 'baseadmin.html'%}
+
+{%block title%}Lista de clientes{%endblock title%}
+
+{%block content%}
+
+	<table>
+		<thead>
+			<tr>
+				<th><p align="center">Servicio</p></th>
+				<th><p align="center">Fecha</p></th>
+				<th><p align="center">Concepto</p></th>
+				<th><p align="center">Cantidad</p></th>
+			</tr>
+		</thead>
+		
+		{%for pagoinstalacion in pagosinstalacionhechos%}
+		
+		<tbody>
+			<tr>		
+				<td>{{pagoinstalacion.servicio}}</td>
+				<td>{{pagoinstalacion.fecha}}</td>
+				<td>Instalacion de servicio</td>
+				<td> {{pagoinstalacion.monto}}</td>
+		
+			</tr>
+
+		{%empty%}
+		
+		</tbody>
+		<h3>No se han hecho pagos</h3>
+		
+		{%endfor%}
+
+		{%for pagorenta in pagosrentahechos%}
+		
+		<tbody>
+			<tr>		
+				<td>{{pagorenta.servicio}}</td>
+				<td>{{pagorenta.fecha}}</td>
+				<td>Renta de 
+					{% if pagorenta.mes == 1%}
+  					Enero
+  					{%elif pagorenta.mes == 2%}
+  					Febrero
+  					{%elif pagorenta.mes == 3%}
+  					Marzo
+  					{%elif pagorenta.mes == 4%}
+  					Abril
+  					{%elif pagorenta.mes == 5%}
+  					Mayo
+  					{%elif pagorenta.mes == 6%}
+  					Junio
+  					{%elif pagorenta.mes == 7%}
+  					Julio
+  					{%elif pagorenta.mes == 8%}
+  					Agosto
+  					{%elif pagorenta.mes == 9%}
+  					Septiembre
+  					{%elif pagorenta.mes == 10%}
+  					Octubre
+ 					{%elif pagorenta.mes == 11%}
+  					Noviembre
+   					{%elif pagorenta.mes == 12%}
+  					Diciembre
+					{% endif %}{{pagorenta.año}}</td>
+				<td>{{pagorenta.monto}}</td>
+			</tr>
+		
+		
+		{%empty%}
+
+		<h3>No se han ralizados pagos de renta</h3>
+		
+		{%endfor%}
+
+		<tr>
+			<td colspan="3" >Total</td>
+			<td>{{sumadepagos}}</td>
+		</tr>
+		</tbody>
+	</table>
+
+{%endblock content%}
