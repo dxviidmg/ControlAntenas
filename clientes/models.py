@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 class Perfil(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	telefono = models.CharField(max_length=10)
-	fecha_de_nacimiento = models.DateField(blank=True, null=True)
+	fecha_de_nacimiento = models.DateField()
 
 	def __str__(self):
 		return '{}'.format(self.user)

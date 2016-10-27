@@ -72,13 +72,12 @@ class CreateCliente(View):
 		
 		if nuevo_user_form.is_valid(): 
 			nuevo_user = nuevo_user_form.save(commit=False)
-			nuevo_user.username = str(nuevo_user.first_name) + str(nuevo_user.last_name)
+			nuevo_user.username = str(nuevo_user.first_name[0]) + str(nuevo_user.last_name[0])
 			nuevo_user.save()
 
 		if nuevo_perfil_form.is_valid():
 			nuevo_perfil = nuevo_perfil_form.save(commit=False)
 			nuevo_perfil.user = nuevo_user
-			#nuevo_perfil.fecha_de_nacimiento = datetime.strptime(fecha_de_nacimiento, '%d %B, %Y')
 			nuevo_perfil.save()
 
 		if nuevo_domicilio_form.is_valid():
