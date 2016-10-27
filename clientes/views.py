@@ -7,7 +7,7 @@ from servicio.models import *
 from infraestructura.models import *
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.contrib.auth import authenticate, login
 
 class ListClientes(View):
@@ -51,7 +51,7 @@ class DetailCliente(View):
 class CreateCliente(View):
 	def get(self, request):
 		template_name = "clientes/createCliente.html"
-
+		
 		formuser = UserCreateForm()
 		formperfil = PerfilForm()
 		formdomicilio = DomicilioForm()
@@ -66,13 +66,20 @@ class CreateCliente(View):
 	def post(self,request):
 		template_name = "clientes/createCliente.html"
 
+		ahora = datetime.now()
+		dia = ahora.day
+		mes = ahora.month
+
+		cuenta = User.objects.filter(is_staff=False).count()
+		uactual = cuenta + 1
+
 		nuevo_user_form = UserCreateForm(request.POST)
 		nuevo_perfil_form = PerfilForm(request.POST)
 		nuevo_domicilio_form = DomicilioForm(request.POST)
 		
 		if nuevo_user_form.is_valid(): 
 			nuevo_user = nuevo_user_form.save(commit=False)
-			nuevo_user.username = str(nuevo_user.first_name[0]) + str(nuevo_user.last_name[0])
+			nuevo_user.username = str(nuevo_user.last_name[0].upper()) + str(nuevo_user.last_name[2].upper()) + str(nuevo_user.first_name[0].upper()) + str(nuevo_user.first_name[1].upper()) + str(dia) + str(mes) + str(uactual)
 			nuevo_user.save()
 
 		if nuevo_perfil_form.is_valid():
