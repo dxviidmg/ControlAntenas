@@ -6,8 +6,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from servicio.models import *
 from .forms import CelulaCreateForm, RedLanCreateForm
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 class ListLineas(View):
+	@method_decorator(login_required)
 	def get(self, request):
 		template_name = "infraestructura/listLineas.html"
 		lineas = Linea.objects.all().order_by("descripcion")
@@ -17,6 +20,7 @@ class ListLineas(View):
 		return render(request, template_name, context)
 
 class DetailLineaAndListCelulas(View):
+	@method_decorator(login_required)
 	def get(self, request, pk):
 		template_name = "infraestructura/detailLinea.html"
 		lineas = Linea.objects.all().order_by("descripcion")
@@ -40,6 +44,7 @@ class DetailLineaAndListCelulas(View):
 		return redirect("infraestructura:detailLineaAndlistCelulas", pk=pk) 
 
 class DetailCelulaAndListLans(View):
+	@method_decorator(login_required)
 	def get(self, request, pk):
 		template_name = "infraestructura/detailCelula.html"
 
@@ -66,15 +71,18 @@ class DetailCelulaAndListLans(View):
 		return redirect("infraestructura:detailCelulaAndListLans", pk=pk) 
 
 class CreateLinea(CreateView):
+	
 	model = Linea
 	success_url = reverse_lazy('infraestructura:listLineas')
 	fields = ['descripcion', 'distribuidor', 'ancho_de_banda', 'mensualidad', 'fecha_proximo_pago']
 
 class UpdateLinea(UpdateView):
+	
 	model = Linea
 	success_url = reverse_lazy('infraestructura:listLineas')
 	fields = ['descripcion', 'distribuidor', 'ancho_de_banda', 'mensualidad', 'fecha_proximo_pago']
 
 class DeleteLinea(DeleteView):
+	
 	model = Linea
 	success_url = reverse_lazy('infraestructura:listLineas')

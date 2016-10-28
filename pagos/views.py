@@ -5,8 +5,11 @@ from .models import *
 from .forms import *
 from django.contrib.auth.models import User
 from datetime import date, timedelta, datetime
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 class CreatePagoInstalacion(View):
+	@method_decorator(login_required)
 	def get(self, request, pk):
 		template_name = "pagos/createPagoInstalacion.html"
 		servicio = get_object_or_404(Servicio, pk=pk)
@@ -30,6 +33,7 @@ class CreatePagoInstalacion(View):
 #		return redirect("clientes:DetailCliente", pk=user.pk)
 
 class CreatePagoRenta(View):
+	@method_decorator(login_required)
 	def get(self, request, pk):
 		template_name = "pagos/createPagoRenta.html"
 
@@ -58,6 +62,7 @@ class CreatePagoRenta(View):
 		return redirect("servicio:listServicios")
 
 class Historial(View):
+	@method_decorator(login_required)
 	def get(self, request, pk):
 		template_name = "pagos/historial.html"
 
@@ -73,6 +78,7 @@ class Historial(View):
 		return render(request,template_name,context)
 
 class ListUltimosPagos(View):
+	@method_decorator(login_required)
 	def get(self, request):
 		template_name = "pagos/ultimospagos.html"
 		
@@ -91,6 +97,7 @@ class ListUltimosPagos(View):
 		return render(request, template_name, context)
 
 class ListPagosPorMes(View):
+	@method_decorator(login_required)
 	def get(self, request):
 		template_name="pagos/reportepagospormes.html"
 		hoy = date.today()

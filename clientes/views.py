@@ -49,6 +49,7 @@ class DetailCliente(View):
 		return render(request, template_name, context)
 
 class CreateCliente(View):
+	@method_decorator(login_required)
 	def get(self, request):
 		template_name = "clientes/createCliente.html"
 		

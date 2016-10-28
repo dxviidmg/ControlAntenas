@@ -5,8 +5,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from .forms import *
 from django.contrib.auth.models import User
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 class ListServicios(View):
+	@method_decorator(login_required)
 	def get(self, request):
 		template_name = "servicio/listServicios.html"
 		servicios = Servicio.objects.all()
@@ -16,6 +19,7 @@ class ListServicios(View):
 		return render(request, template_name, context)
 
 class ListPaquetes(View):
+	@method_decorator(login_required)
 	def get(self, request):
 		template_name = "servicio/listPaquetes.html"
 		paquetes = Paquete.objects.all()
@@ -25,20 +29,24 @@ class ListPaquetes(View):
 		return render(request, template_name, context)
 
 class CreatePaquete(CreateView):
+	
 	model = Paquete
 	success_url = reverse_lazy('servicio:listPaquetes')
 	fields = ['nombre', 'tipo', 'descripcion', 'megas_de_internet', 'precio', 'imagen']
 
 class UpdatePaquete(UpdateView):
+	
 	model = Paquete
 	success_url = reverse_lazy('servicio:listPaquetes')
 	fields = ['nombre', 'tipo', 'descripcion', 'megas_de_internet','precio', 'imagen']
 
 class DeletePaquete(DeleteView):
+	
 	model = Paquete
 	success_url = reverse_lazy('servicio:listPaquetes')
 
 class CreateServicio(View):
+	
 	def get(self, request, pk):
 		template_name = "servicio/createServicio.html"
 		formservicio = ServicioForm()
@@ -62,11 +70,13 @@ class CreateServicio(View):
 		return redirect("pagos:createPagoInstalacion", pk=nuevo_servicio.pk)
 
 class UpdateServicio(UpdateView):
+	
 	model = Servicio
 	success_url = reverse_lazy('servicio:listServicios')
 	fields = ['user', 'paquete', 'estado', 'inicio_de_servicio' ]
 
 class DeleteServicio(DeleteView):
+	
 	model = Servicio
 	success_url = reverse_lazy('servicio:listServicios')
 
