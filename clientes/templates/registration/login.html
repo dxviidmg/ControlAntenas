@@ -4,40 +4,25 @@
 
 {%block content%}
 
-    <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="{%static 'vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css'%}">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-
-    <!-- Theme CSS -->
-    <link href="{%static 'css/grayscale.min.css'%}" rel="stylesheet">
-
-    
+<div class="col-lg-8">
 
 	        <form action="." method="POST" name="auth" enctype='multipart/form-data'>
             {% csrf_token %}
             <div class="form-group row">
                 <p>Usuario</p>
                 <div class="col-lg-8">
-                    <input class="form-control input-lg" name="username" type="text" id="example-text-input">
+                    <input class="form-control" name="username" type="text" id="example-text-input" width="48">
                 </div>
             </div>
 
             <div class="form-group row">
                 <p>Contraseña</p>
                 <div class="col-lg-8">
-                    <input class="form-control input-lg" name="password" type="password" id="example-password-input">
+                    <input class="form-control" name="password" type="password" id="example-password-input">
                 </div>
             </div>
             <br>
-            <button class="btn btn-default btn-lg" type="submit">Login</button>
+            <button class="btn btn-default btn-lg" type="submit" width="48">Login</button>
         </form>
-
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="{%static 'js/grayscale.min.js'%}"></script>
-
+</div>
 {%endblock content%}
