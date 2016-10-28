@@ -5,7 +5,7 @@ class Linea(models.Model):
 	descripcion = models.CharField(max_length=100)
 	distribuidor = models.CharField(max_length=20)
 	ancho_de_banda = models.IntegerField()
-	pago = models.IntegerField(blank=True,null=True)
+	mensualidad = models.IntegerField(blank=True,null=True)
 	fecha_proximo_pago = models.DateField(blank=True,null=True)
 
 	def __str__(self):
@@ -34,3 +34,6 @@ class Empresa(models.Model):
 	email = models.EmailField(blank=True,null=True)
 	telefono = models.CharField(max_length=20, blank=True,null=True)
 	direccion = models.CharField(max_length=100, blank=True,null=True)
+
+	def __str__(self):
+		return self.direccion

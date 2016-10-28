@@ -16,7 +16,7 @@ class Paquete(models.Model):
 	imagen = models.ImageField(upload_to='paquetes', null=True, blank=True)
 
 	def __str__(self):
-		return self.nombre
+		return '{} de {} Megas'.format(self.nombre, self.megas_de_internet)
 
 class Servicio(models.Model):
 

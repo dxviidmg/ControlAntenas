@@ -14,7 +14,7 @@
 				<th><p align="center">Descripción</p></th>
 				<th><p align="center">Distribuidor</p></th>
 				<th><p align="center">Ancho de banda</p></th>
-				<th><p align="center">Costo</p></th>
+				<th><p align="center">Mensualidad</p></th>
 				<th><p align="center">Proximo pago</p></th>
 				<th colspan="3"><p align="center">Acciones</p></th>
 			</tr>
@@ -25,7 +25,7 @@
 				<td>{{linea.descripcion}}</td>
 				<td>{{linea.distribuidor}}</td>
 				<td>{{linea.ancho_de_banda}} Megas</td>
-				<td>{{linea.pago}}</td>
+				<td>${{linea.mensualidad}}</td>
 				<td>{{linea.fecha_proximo_pago}}</td>
 				<td><a href="{%url 'infraestructura:detailLineaAndlistCelulas' linea.pk%}">Ver detalles</a></td>
 				<td><a href="{% url 'infraestructura:updateLinea' linea.pk %}">Editar</a></td>
@@ -35,7 +35,7 @@
 		{%empty%}
 
 			</table>
-		<h3>No hay lineas</h3>
+		<h3>Vacio</h3>
 
 		{%endfor%}
 

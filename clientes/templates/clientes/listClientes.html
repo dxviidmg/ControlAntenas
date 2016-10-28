@@ -12,6 +12,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th><p align="center">Usuario</p></th>
 				<th><p align="center">Apellidos</p></th>
 				<th><p align="center">Nombre</p></th>
 				<th colspan="2" ><p align="center">Acciones</p></th>
@@ -22,6 +23,7 @@
 
 		<tbody>
 			<tr>
+				<td>{{user.username}}</td>
 				<td>{{user.last_name}}</td>
 				<td>{{user.first_name}}</td>
 				<td><a href="{%url 'clientes:detailCliente' user.pk%}">Ver detalle</a></td>
@@ -31,7 +33,7 @@
 		{%empty%}
 
 	</table>
-	<h2>Lista vacia</h2>
+	<h2>Vacio</h2>
 
 		{%endfor%}
 

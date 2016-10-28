@@ -68,12 +68,12 @@ class DetailCelulaAndListLans(View):
 class CreateLinea(CreateView):
 	model = Linea
 	success_url = reverse_lazy('infraestructura:listLineas')
-	fields = ['descripcion', 'distribuidor', 'ancho_de_banda', 'pago', 'fecha_proximo_pago']
+	fields = ['descripcion', 'distribuidor', 'ancho_de_banda', 'mensualidad', 'fecha_proximo_pago']
 
 class UpdateLinea(UpdateView):
 	model = Linea
 	success_url = reverse_lazy('infraestructura:listLineas')
-	fields = ['descripcion', 'distribuidor', 'ancho_de_banda', 'pago', 'fecha_proximo_pago']
+	fields = ['descripcion', 'distribuidor', 'ancho_de_banda', 'mensualidad', 'fecha_proximo_pago']
 
 class DeleteLinea(DeleteView):
 	model = Linea

@@ -15,7 +15,7 @@
 		<tbody>
 			<tr>
 				<td>{{pagoInstalacion.fecha}}</td>
-				<td>pago de instalacion</td>
+				<td>Instalación</td>
 				<td>${{pagoInstalacion.monto}}
 			</tr>
 		{%for pago in pagosRenta%}
@@ -46,7 +46,7 @@
    					{%elif pago.mes == 12%}
   					Diciembre
 					{% endif %} {{pago.año}}</td>
-				<td>{{pago.monto}}</td>
+				<td>${{pago.monto}}</td>
 			</tr>
 		</tbody>
 

@@ -1,8 +1,10 @@
 {%extends 'baseadmin.html'%}
 
-{%block title%}Lista de clientes{%endblock title%}
+{%block title%}Pagos del ultimo mes{%endblock title%}
 
 {%block content%}
+	
+	<h2>Pagos del ultimo mes</h2>
 
 	<table>
 		<thead>
@@ -20,8 +22,8 @@
 			<tr>		
 				<td>{{pagoinstalacion.servicio}}</td>
 				<td>{{pagoinstalacion.fecha}}</td>
-				<td>Instalacion de servicio</td>
-				<td> {{pagoinstalacion.monto}}</td>
+				<td>Instalación de servicio</td>
+				<td>${{pagoinstalacion.monto}}</td>
 		
 			</tr>
 
@@ -64,7 +66,7 @@
    					{%elif pagorenta.mes == 12%}
   					Diciembre
 					{% endif %}{{pagorenta.año}}</td>
-				<td>{{pagorenta.monto}}</td>
+				<td>${{pagorenta.monto}}</td>
 			</tr>
 		
 		
@@ -76,7 +78,7 @@
 
 		<tr>
 			<td colspan="3" >Total</td>
-			<td>{{sumadepagos}}</td>
+			<td>${{sumadepagos}}</td>
 		</tr>
 		</tbody>
 	</table>
