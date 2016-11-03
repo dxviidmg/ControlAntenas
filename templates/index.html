@@ -117,8 +117,13 @@
                     {%for producto in packs%}
                     <div class="col-lg-4" style="display: inline-block;">
 
-                        <div class="card card-block"¿">
-                        <!-- Contact Section     <img class="card-img-top" src="/media/{{producto.imagen}}" width="270" height="150" alt="Card image cap"> -->    <p>
+                        <div class="card card-block">
+
+                        {%if producto.imagen%}
+                        <img class="card-img-top" src="/media/{{producto.imagen}}" width="270" height="150" alt="Card image cap">
+                        {%else%}
+                        {%endif%}
+                        <p>
                             <h4 class="card-title">{{producto.nombre}}</h4>
                             <p class="card-title">${{producto.precio}}.00 al mes</p>
                             
@@ -126,7 +131,7 @@
                     </div>
                     {%empty%}
                     
-                <h3>Lista de paquetes vacia</h3>
+                    <h3>Lista de paquetes vacia</h3>
                     
                     {%endfor%}
 
