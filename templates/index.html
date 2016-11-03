@@ -122,10 +122,11 @@
                         {%if producto.imagen%}
                         <img class="card-img-top" src="/media/{{producto.imagen}}" width="270" height="150" alt="Card image cap">
                         {%else%}
+                        <img class="card-img-top" src="/media/noimage.png" width="270" height="150" alt="Card image cap">
                         {%endif%}
                         <p>
                             <h4 class="card-title">{{producto.nombre}}</h4>
-                            <p class="card-title">${{producto.precio}}.00 al mes</p>
+                            <p class="card-title">Mensualidad de ${{producto.precio}}.00</p>
                             
                         </div>                            
                     </div>
