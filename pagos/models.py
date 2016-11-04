@@ -8,7 +8,7 @@ class PagoInstalacion(models.Model):
 	fecha = models.DateField(default=timezone.now)
 	hora = models.TimeField(default=timezone.now)
 	def __str__(self):
-		return '{}'.format(self.fecha)
+		return 'Instalación de {}'.format(self.servicio, )
 
 class PagoRenta(models.Model):
 	Mes_CHOICES = (
@@ -33,4 +33,4 @@ class PagoRenta(models.Model):
 	hora = models.TimeField(default=timezone.now)
 
 	def __str__(self):
-		return '{}{}{}'.format(self.servicio, self.mes, self.año)
+		return 'Mensualidad de {} del mes {} del año {}'.format(self.servicio, self.mes, self.año)
