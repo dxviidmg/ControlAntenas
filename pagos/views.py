@@ -12,9 +12,11 @@ class CreatePagoInstalacion(View):
 	@method_decorator(login_required)
 	def get(self, request, pk):
 		template_name = "pagos/createPagoInstalacion.html"
+		nuevopagoinst = PagoInstalacionForm()
 		servicio = get_object_or_404(Servicio, pk=pk)
 		user = get_object_or_404(User, servicio=servicio)
 		context = {
+			'nuevopagoinst': nuevopagoinst,
 			'user': user,
 		}
 		return render(request,template_name,context)
@@ -24,11 +26,18 @@ class CreatePagoInstalacion(View):
 		servicio = get_object_or_404(Servicio, pk=pk)
 		user = get_object_or_404(User, servicio=servicio)
 
-		nuevo_pago_inst = PagoInstalacion()
-		nuevo_pago_inst.servicio = servicio
-		nuevo_pago_inst.monto = 200
-		nuevo_pago_inst.save()
+		nuevo_pago_instalacion_form = PagoInstalacionForm(request.POST)
+		if nuevo_pago_instalacion_form.is_valid:
+			nuevo_pago_instalacion = nuevo_pago_instalacion_form.save(commit=False)
+			nuevo_pago_instalacion.servicio = servicio
+			nuevo_pago_instalacion.save()
 		return redirect("servicio:listServicios")
+#		nuevo_pago_inst = PagoInstalacion()
+#		nuevo_pago_inst.servicio = servicio
+#		nuevo_pago_inst.monto = 200
+#		nuevo_pago_inst.save()
+#		return redirect("servicio:listServicios")
+
 #		regresar a detailcliente
 #		return redirect("clientes:DetailCliente", pk=user.pk)
 

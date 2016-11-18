@@ -7,7 +7,7 @@
 	<h3>Pagar instalación</h3>
 	<form action="." method="post">
 		{%csrf_token%}
-		<h3>Monto: $200</h3>
+		{{nuevopagoinst.as_p}}
 			<input type="submit" value="Pagar">
 	</form>
 

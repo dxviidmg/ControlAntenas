@@ -10,9 +10,9 @@ class Paquete(models.Model):
 
 	nombre = models.CharField(max_length=30)
 	tipo = models.CharField(max_length=20, choices=Tipo_CHOICES, null=True, blank=True)
-	descripcion = models.CharField(max_length=100)
 	megas_de_internet = models.IntegerField()
 	precio = models.IntegerField()
+	publicado = models.BooleanField(default=True)
 	imagen = models.ImageField(upload_to='paquetes', null=True, blank=True)
 
 	def __str__(self):

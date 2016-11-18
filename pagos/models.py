@@ -3,8 +3,12 @@ from servicio.models import Servicio
 from django.utils import timezone
 
 class PagoInstalacion(models.Model):
+	Pago_CHOICES = (
+		(800 , '800'),
+		(1200 , '1200'),
+	)
 	servicio = models.OneToOneField(Servicio)
-	monto = models.IntegerField()
+	monto = models.IntegerField(choices=Pago_CHOICES)
 	fecha = models.DateField(default=timezone.now)
 	hora = models.TimeField(default=timezone.now)
 	def __str__(self):

@@ -113,8 +113,12 @@
             <div class="container content text-center">
                 <div class="row">
                     <h2>Paquetes</h2>
-                    {%paquetes as packs%}
-                    {%for producto in packs%}
+
+                    {%paquetesFamiliares as pf%}
+
+                    <h3>Para tu hogar</h3>
+
+                    {%for producto in pf%}
                     <div class="col-lg-4" style="display: inline-block;">
 
                         <div class="card card-block">
@@ -126,7 +130,35 @@
                         {%endif%}
                         <p>
                             <h4 class="card-title">{{producto.nombre}}</h4>
-                            <p class="card-title">Mensualidad de ${{producto.precio}}.00</p>
+                            <p class="card-title">{{producto.megas_de_internet}} Mbps a ${{producto.precio}}.00 al mes</p>
+                            
+                        </div>                            
+                    </div>
+                    {%empty%}
+                    
+                    <h3>Lista de paquetes vacia</h3>
+                    
+                    {%endfor%}
+
+                    <p>
+
+                    {%paquetesInstitucionales as pi%}
+
+                    <h3>Para tu empresa o trabajo</h3>
+                    
+                    {%for producto in pi%}
+                    <div class="col-lg-4" style="display: inline-block;">
+
+                        <div class="card card-block">
+
+                        {%if producto.imagen%}
+                        <img class="card-img-top" src="/media/{{producto.imagen}}" width="270" height="150" alt="Card image cap">
+                        {%else%}
+                        <img class="card-img-top" src="/media/noimage.png" width="270" height="150" alt="Card image cap">
+                        {%endif%}
+                        <p>
+                            <h4 class="card-title">{{producto.nombre}}</h4>
+                            <p class="card-title">{{producto.megas_de_internet}} Mbps a ${{producto.precio}}.00 al mes</p>
                             
                         </div>                            
                     </div>
@@ -151,12 +183,18 @@
 
                 {%datosempresa as infoempresa%}
                 {%for info in infoempresa%}
-                
+                {%if info.direccion%}
                 <p>Domicilio: {{info.direccion}}</p>
-                <p>{{info.email}}</p>
+                {%endif%}
+
+                {%if info.telefono%}
                 <p>Telefono: {{info.telefono}}</p>
+                {%endif%}
+
+                {%if info.email%}
                 <p>Correo electrónico: <a href="mailto:feedback@startbootstrap.com">{{info.email}}</a>
-                </p>
+                {%endif%}
+                 </p>
 
                 {%empty%}
                 

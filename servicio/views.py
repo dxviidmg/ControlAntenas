@@ -32,13 +32,13 @@ class CreatePaquete(CreateView):
 	
 	model = Paquete
 	success_url = reverse_lazy('servicio:listPaquetes')
-	fields = ['nombre', 'tipo', 'descripcion', 'megas_de_internet', 'precio', 'imagen']
+	fields = ['nombre', 'tipo', 'megas_de_internet', 'precio', 'publicado', 'imagen']
 
 class UpdatePaquete(UpdateView):
 	
 	model = Paquete
 	success_url = reverse_lazy('servicio:listPaquetes')
-	fields = ['nombre', 'tipo', 'descripcion', 'megas_de_internet','precio', 'imagen']
+	fields = ['nombre', 'tipo', 'megas_de_internet','precio', 'publicado', 'imagen']
 
 class DeletePaquete(DeleteView):
 	
