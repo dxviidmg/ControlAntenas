@@ -1,0 +1,15 @@
+{%extends 'basecliente.html'%}
+
+{%block title%}Pago de renta{%endblock title%}
+
+{%block content%}
+
+	<form action="." method="post">
+		<h3>Pago de mensualidad</h3>
+			{%csrf_token%}
+			{{formpagorenta.as_p}}
+			<h4> Mensualidad: ${{paquete.precio}}</h4>
+			<input type="submit" value="Pagar">
+	</form>
+
+{%endblock content%}

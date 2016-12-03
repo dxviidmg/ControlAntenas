@@ -7,4 +7,6 @@ urlpatterns = [
 	url(r'^pagos/historial/(?P<pk>\d+)/$', views.Historial.as_view(), name="historial"),
 	url(r'^pagos/nuevo/instalacion/(?P<pk>\d+)/$', views.CreatePagoInstalacion.as_view(), name="createPagoInstalacion"),
 	url(r'^pagos/nuevo/renta/(?P<pk>\d+)/$', views.CreatePagoRenta.as_view(), name="createPagoRenta"),
+	url(r'^pagos/nuevo/renta/$', views.CreatePagoRentaUser.as_view(), name="createPagoRentaUser"),
+	url(r'^pagos/procesando/$', views.EleccionPago.as_view(),name='eleccionPago'),
  ]

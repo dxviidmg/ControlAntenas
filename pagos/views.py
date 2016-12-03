@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from datetime import date, timedelta, datetime
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 
 class CreatePagoInstalacion(View):
 	@method_decorator(login_required)
@@ -138,3 +139,51 @@ class ListPagosPorMes(View):
 			'primerodelmes': primerodelmes,
 			}
 		return render(request, template_name, context)
+
+class CreatePagoRentaUser(View):
+	@method_decorator(login_required)
+	def get(self, request):
+		template_name = "pagos/createPagoRentaUser.html"
+
+		servicio = get_object_or_404(Servicio, pk=request.user.pk)
+		paquete = get_object_or_404(Paquete, servicio=servicio)
+		formpagorenta = PagoRentaForm()
+
+		context = {
+			'formpagorenta': formpagorenta,
+			'paquete': paquete,
+		}
+		return render(request,template_name,context)
+	def post(self,request):
+		template_name = "pagos/createPagoRenta.html"		
+		
+		servicio = get_object_or_404(Servicio, pk=request.user.pk)
+		paquete = get_object_or_404(Paquete, servicio=servicio)
+		nuevo_pago_renta_form = PagoRentaForm(request.POST)
+
+		if nuevo_pago_renta_form.is_valid():
+			nuevo_pago_renta = nuevo_pago_renta_form.save(commit=False)
+			nuevo_pago_renta.servicio = servicio
+			nuevo_pago_renta.monto = paquete.precio
+			nuevo_pago_renta.save()
+		return redirect(reverse('pagos:eleccionPago'))
+
+class EleccionPago(View):
+	def get(self,request):
+#		order_id=request.session.get('order_id')
+#		order=get_object_or_404(Orden,id=order_id)
+#		host=request.get_host()
+#
+#		paypal_dict={
+#			'business':settings.PAYPAL_RECEIVER_EMAIL,
+#			'amount':'%.2f' % order.get_total_cost().quantize(Decimal('.01')),
+#			'item_name':'Order {}'.format(order.id),
+#			'invoice':str(order.id),
+#			'currency_code':'MXN',
+#			'notify_url':'http://{}{}'.format(host,reverse('paypal-ipn')),
+#			'return_url':'http://{}{}'.format(host,reverse('pagos:donePago')),
+#			'cancel_return':'http://{}{}'.format(host,reverse('pagos:canceledPago')),
+#		}
+#		form=PayPalPaymentsForm(initial=paypal_dict)
+
+		return render(request,'pagos/eleccionPago.html')
